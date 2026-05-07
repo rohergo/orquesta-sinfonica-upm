@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Así suena La Vida Breve — Orquesta Sinfónica UPM</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:          #0a0a0a;
+    --bg-card:     #111111;
+    --bg-section:  #0f0f0f;
+    --border:      rgba(255,255,255,0.08);
+    --text:        #e8e8e8;
+    --text-muted:  #888;
+    --text-dim:    #555;
+    --gold:        #c8a96e;
+    --gold-soft:   rgba(200,169,110,0.15);
+    --white:       #ffffff;
+    --nav-h:       72px;
+    --radius:      4px;
+    --max:         720px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--nav-h);
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    z-index: 100;
+  }
+  .nav-logo { display: flex; flex-direction: column; gap: 1px; text-decoration: none; }
+  .nav-logo-main { font-size: 0.88rem; font-weight: 700; color: var(--white); }
+  .nav-logo-sub  { font-size: 0.65rem; font-weight: 400; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+  .nav-links { display: flex; align-items: center; gap: 0.2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.78rem; font-weight: 500; color: var(--text-muted);
+    text-decoration: none; padding: 0.4rem 0.75rem; border-radius: var(--radius);
+    letter-spacing: 0.03em; transition: color 0.2s, background 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+  .nav-links .cta {
+    background: var(--white); color: var(--bg) !important;
+    font-weight: 700; padding: 0.45rem 1rem; margin-left: 0.5rem; transition: opacity 0.2s;
+  }
+  .nav-links .cta:hover { opacity: 0.85; background: var(--white) !important; }
+
+  /* HERO */
+  .hero {
+    margin-top: var(--nav-h);
+    position: relative; height: 68vh; min-height: 420px;
+    overflow: hidden; display: flex; align-items: flex-end;
+  }
+  .hero-img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center 30%; filter: brightness(0.38);
+  }
+  .hero-gradient {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent 0%, rgba(10,10,10,0.2) 40%, rgba(10,10,10,0.85) 75%, var(--bg) 100%);
+  }
+  .hero-content {
+    position: relative; width: 100%;
+    max-width: calc(var(--max) + 4rem); margin: 0 auto;
+    padding: 0 2rem 3.5rem;
+  }
+  .hero-tag {
+    display: inline-block; font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);
+    border: 1px solid rgba(200,169,110,0.4); border-radius: 2px;
+    padding: 0.25rem 0.6rem; margin-bottom: 1.1rem;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 700; color: var(--white);
+    line-height: 1.1; margin-bottom: 1rem; max-width: 680px;
+  }
+  .hero-title em { font-style: italic; color: rgba(255,255,255,0.75); }
+  .hero-meta { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .hero-meta-item { font-size: 0.8rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.4rem; }
+  .hero-meta-item strong { color: var(--text); font-weight: 500; }
+  .hero-meta-sep { width: 1px; height: 14px; background: var(--border); }
+
+  /* ARTICLE */
+  .article-wrap { max-width: var(--max); margin: 0 auto; padding: 3rem 2rem 5rem; }
+
+  .back-link {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.78rem; font-weight: 600; color: var(--text-muted);
+    text-decoration: none; letter-spacing: 0.04em; margin-bottom: 2rem; transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--white); }
+
+  .lead {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.2rem; font-weight: 400; font-style: italic;
+    color: rgba(232,232,232,0.85); line-height: 1.7;
+    border-left: 2px solid var(--gold); padding-left: 1.4rem; margin-bottom: 3rem;
+  }
+
+  .divider {
+    display: flex; align-items: center; gap: 0.8rem;
+    margin: 2.5rem 0; opacity: 0.2;
+  }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--text); }
+  .divider span { font-size: 0.55rem; letter-spacing: 0.3em; }
+
+  .section-label {
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem;
+  }
+  h2.section-heading {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.55rem; font-weight: 700; color: var(--white);
+    line-height: 1.25; margin-bottom: 1.3rem;
+  }
+  .body-text p { color: var(--text); margin-bottom: 1.2rem; font-size: 1rem; }
+
+  .section-block {
+    margin-bottom: 3rem;
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .section-block.visible { opacity: 1; transform: translateY(0); }
+
+  .pullquote {
+    margin: 2.5rem 0; padding: 1.8rem 2rem;
+    background: var(--bg-card);
+    border-top: 1px solid var(--gold);
+    border-bottom: 1px solid rgba(200,169,110,0.2);
+    position: relative;
+  }
+  .pullquote::before {
+    content: '\201C'; position: absolute; top: -0.3rem; left: 1.5rem;
+    font-family: 'Playfair Display', serif; font-size: 5rem; line-height: 1;
+    color: var(--gold); opacity: 0.15;
+  }
+  .pullquote p {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.15rem; font-style: italic;
+    color: rgba(232,232,232,0.9); line-height: 1.65; position: relative;
+  }
+
+  .author-box {
+    margin-top: 3.5rem; padding: 1.6rem 1.8rem;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); display: flex; gap: 1.2rem; align-items: flex-start;
+  }
+  .author-avatar {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--gold-soft); border: 1px solid rgba(200,169,110,0.3);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    font-family: 'Playfair Display', serif; font-size: 1.3rem;
+    color: var(--gold); font-style: italic; font-weight: 700;
+  }
+  .author-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.2rem; }
+  .author-name { font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 0.4rem; }
+  .author-info p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; }
+
+  /* RELATED */
+  .related { background: var(--bg-section); border-top: 1px solid var(--border); padding: 4rem 2rem; }
+  .related-inner { max-width: calc(var(--max) + 4rem); margin: 0 auto; }
+  .related-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.5rem; }
+  .related h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--white); margin-bottom: 2rem; }
+  .related-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+  .related-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden; text-decoration: none;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .related-card:hover { border-color: rgba(200,169,110,0.4); transform: translateY(-3px); }
+  .related-card img { width: 100%; height: 170px; object-fit: cover; display: block; filter: brightness(0.72); transition: filter 0.3s; }
+  .related-card:hover img { filter: brightness(0.9); }
+  .related-card-body { padding: 1.2rem; }
+  .related-card-tag { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+  .related-card-title { font-size: 0.95rem; font-weight: 600; color: var(--white); line-height: 1.35; margin-bottom: 0.4rem; }
+  .related-card-date { font-size: 0.72rem; color: var(--text-dim); }
+
+  /* FOOTER */
+  footer { background: #060606; border-top: 1px solid var(--border); padding: 2.5rem 2rem; }
+  .footer-inner {
+    max-width: calc(var(--max) + 4rem); margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-brand { font-size: 0.88rem; font-weight: 700; color: var(--text-muted); }
+  .footer-copy { font-size: 0.72rem; color: var(--text-dim); }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 1.2rem; }
+    .nav-links { display: none; }
+    .hero-content, .article-wrap, .related { padding-left: 1.2rem; padding-right: 1.2rem; }
+    .author-box { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://rohergo.github.io/orquesta-sinfonica-upm/#" class="nav-logo">
+    <span class="nav-logo-main">Sinfónica UPM</span>
+    <span class="nav-logo-sub">Orquesta Universitaria</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://rohergo.github.io/orquesta-sinfonica-upm/#conciertos">Conciertos</a></li>
+    <li><a href="https://rohergo.github.io/orquesta-sinfonica-upm/#noticias">Noticias</a></li>
+    <li><a href="https://rohergo.github.io/orquesta-sinfonica-upm/#galeria">Galería</a></li>
+    <li><a href="https://rohergo.github.io/orquesta-sinfonica-upm/#orquesta">La Orquesta</a></li>
+    <li><a href="https://rohergo.github.io/orquesta-sinfonica-upm/#media">Medios</a></li>
+    <li><a href="https://upm.koobin.es" class="cta">Comprar Entradas</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <img class="hero-img"
+    src="https://live.staticflickr.com/65535/55032204750_1a9d0cacd6_b.jpg"
+    alt="Ensayo Orquesta Sinfónica UPM">
+  <div class="hero-gradient"></div>
+  <div class="hero-content">
+    <span class="hero-tag">Blog · Análisis</span>
+    <h1 class="hero-title">
+      La Vida Breve: Amor, Traición<br>y Destino en <em>la Granada de Falla</em>
+    </h1>
+    <div class="hero-meta">
+      <span class="hero-meta-item">Por <strong>Jorge Hernández</strong></span>
+      <div class="hero-meta-sep"></div>
+      <span class="hero-meta-item"><strong>Mayo 2026</strong></span>
+      <div class="hero-meta-sep"></div>
+      <span class="hero-meta-item">Ópera española</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-wrap">
+
+  <a href="https://rohergo.github.io/orquesta-sinfonica-upm/#noticias" class="back-link">
+    ← Volver a Noticias
+  </a>
+
+  <p class="lead">
+    Hay obras que no se escuchan: se sienten en la piel. La Vida Breve, la ópera en dos actos de Manuel de Falla estrenada en Niza en 1913, es una de esas rarezas que conmueven antes de que el intelecto tenga tiempo de intervenir. Es flamenco sublimado, tragedia griega con acento andaluz, y uno de los testimonios más puros del alma musical española.
+  </p>
+
+  <div class="section-block">
+    <div class="section-label">I</div>
+    <h2 class="section-heading">Un premio que tardó diez años en hacerse ópera</h2>
+    <div class="body-text">
+      <p>La historia de La Vida Breve comienza mucho antes de su estreno. En 1904, el joven Manuel de Falla —gaditano de veinticinco años, sin recursos pero con un talento descomunal— se presentó al concurso de ópera organizado por la Real Academia de Bellas Artes de San Fernando de Madrid. El libreto era obra de Carlos Fernández Shaw, poeta y dramaturgo que supo capturar en pocas páginas toda la densidad emocional del mundo gitano-andaluz. El jurado otorgó el primer premio a la obra sin dudarlo. Y ahí, durante casi una década, la partitura durmió en un cajón.</p>
+      <p>Fue el periodo parisino de Falla —entre 1907 y 1914, años de amistad fecunda con Debussy, Ravel y Dukas— el que transformó la partitura original. Sin perder su esencia española, la obra incorporó la precisión orquestal del impresionismo francés. Cuando por fin se estrenó en el Théâtre Municipal de Niza el 1 de abril de 1913, el público y la crítica respondieron con entusiasmo. Madrid tendría que esperar hasta noviembre de ese mismo año para escucharla en el Teatro de la Zarzuela.</p>
+    </div>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <div class="section-block">
+    <div class="section-label">II</div>
+    <h2 class="section-heading">Granada como escenario del alma</h2>
+    <div class="body-text">
+      <p>La acción transcurre en Granada, a principios del siglo XX. No la Granada de postal, sino la del Albaicín: sus cuevas, sus fraguas, su olor a jazmín y a brasas. Salud, la protagonista, es una joven gitana enamorada de Paco, un hombre de otra clase social que la ha prometido amor eterno. Cuando Salud descubre que Paco va a casarse con una mujer de su condición, el mundo se le derrumba. La obra no propone escapatoria: la tragedia avanza con la inevitabilidad de una maldición antigua.</p>
+      <p>El libreto de Fernández Shaw es breve y directo, casi brutal en su economía narrativa. No hay subtramas ni distracciones: todo gravita hacia el momento en que Salud, ante los invitados de la boda, confronta a Paco y muere de dolor en escena. Una muerte sin herida visible, porque la herida es interior. Es, en ese sentido, una obra absolutamente moderna en su psicología.</p>
+    </div>
+  </div>
+
+  <blockquote class="pullquote section-block">
+    <p>Falla no ilustra a Granada: la invoca. Su música no describe el paisaje; lo hace sonar desde adentro, como si la tierra andaluza tuviera su propia voz y hubiera elegido a este compositor para prestársela.</p>
+  </blockquote>
+
+  <div class="section-block">
+    <div class="section-label">III</div>
+    <h2 class="section-heading">La música: entre el cante jondo y la modernidad europea</h2>
+    <div class="body-text">
+      <p>Lo que hace a La Vida Breve una obra singular dentro del repertorio operístico universal es su doble naturaleza. Por un lado, es profundamente española: los modos flamencos, las escalas andaluzas, el uso de la guitarra y las castañuelas en momentos clave, la cadencia del cante jondo que impregna la voz de Salud. Por otro, es una ópera de su tiempo en el más alto sentido: la orquestación es refinada, los cromatismos armoniosos, el tratamiento del texto vocal impecable.</p>
+      <p>El célebre Intermezzo instrumental del segundo acto —frecuentemente interpretado de forma independiente en concierto— es quizás el momento más logrado de toda la partitura. En apenas unos minutos, Falla condensa melancolía, belleza y fatalismo con una precisión que recuerda a Debussy en su mejor momento. No es casualidad: los dos compositores se frecuentaban en París y se profesaban una admiración mutua que la música de ambos refleja.</p>
+      <p>La Danza del segundo acto, con sus ritmos percutantes y su energía desatada, contrasta con la intimidad doliente de las arias de Salud. Falla tenía un instinto dramático extraordinario: sabía cuándo golpear y cuándo susurrar. La voz de la protagonista —habitualmente confiada a una mezzo-soprano de amplio registro— oscila entre la ternura y el lamento con una fluidez que hace que la obra resulte, en las mejores interpretaciones, absolutamente devastadora.</p>
+    </div>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <div class="section-block">
+    <div class="section-label">IV</div>
+    <h2 class="section-heading">Clases sociales, honra y destino: temas de ayer y de hoy</h2>
+    <div class="body-text">
+      <p>La Vida Breve no es solo una historia de amor frustrado: es una denuncia velada de las desigualdades de clase. Salud pertenece al mundo gitano, un universo marginalizado y excluido del orden social dominante. Paco, aun reconociendo su amor por ella, cede ante las convenciones y escoge el matrimonio conveniente. La tragedia no es individual; es sistémica. En ese sentido, la obra conecta con debates que siguen siendo pertinentes más de un siglo después de su creación.</p>
+      <p>Hay también en la obra una dimensión de honra entendida a la manera española clásica: la palabra dada, la promesa rota, el daño que no tiene reparación posible. Salud no busca venganza sino reconocimiento; no quiere destruir a Paco, sino que él reconozca lo que ha destruido en ella. La diferencia entre ambas cosas es pequeña pero esencial, y Falla la subraya musicalmente con una delicadeza extraordinaria.</p>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label">V</div>
+    <h2 class="section-heading">Legado e interpretaciones memorables</h2>
+    <div class="body-text">
+      <p>A pesar de su brevedad —la obra dura menos de ochenta minutos—, La Vida Breve ha sido llevada a escena en los teatros más importantes del mundo, desde el Metropolitan Opera de Nueva York hasta el Teatro Real de Madrid, pasando por la Ópera de París y el Teatro Colón de Buenos Aires. Su éxito no ha decaído: el público sigue respondiendo con la misma emoción que en 1913, porque la historia de Salud habla a algo que no envejece.</p>
+      <p>Entre las interpretaciones discográficas más recordadas está la dirigida por Rafael Frühbeck de Burgos con Victoria de los Ángeles en el papel de Salud, una grabación que muchos consideran definitiva. Más recientemente, directores como Jesús López Cobos y Gustavo Dudamel han reivindicado la obra con producciones que subrayan su modernidad intacta.</p>
+      <p>La Vida Breve es, en definitiva, una obra perfecta en su imperfección humana: habla de lo que se pierde cuando el miedo vence al amor, de cómo las estructuras sociales aplastan a los más vulnerables, y de que hay dolores que no tienen cura posible. Falla lo sabía. Y supo convertir esa verdad oscura en algo de una belleza incontestable. Escucharla es, siempre, un pequeño —y necesario— acto de memoria.</p>
+    </div>
+  </div>
+
+  <div class="author-box section-block">
+    <div class="author-avatar">J</div>
+    <div class="author-info">
+      <div class="author-label">Sobre el autor</div>
+      <div class="author-name">Jorge Hernández</div>
+      <p>Crítico musical y colaborador habitual de esta publicación. Especializado en ópera española y en música del siglo XX, ha publicado ensayos sobre Falla, Granados y Turina en diversas revistas culturales de España y América Latina.</p>
+    </div>
+  </div>
+
+</div>
+
+<section class="related">
+  <div class="related-inner">
+    <div class="related-label">Sigue leyendo</div>
+    <h3>Más noticias y blog</h3>
+    <div class="related-cards">
+      <a class="related-card" href="https://rohergo.github.io/orquesta-sinfonica-upm/#noticias">
+        <img src="https://live.staticflickr.com/65535/55032049118_2c4fb1759a_b.jpg" alt="Concierto Fin de Curso">
+        <div class="related-card-body">
+          <div class="related-card-tag">Noticia</div>
+          <div class="related-card-title">La Sinfónica UPM cierra el curso con Falla y Bizet en el Auditorio Nacional</div>
+          <div class="related-card-date">28 Abr 2026</div>
+        </div>
+      </a>
+      <a class="related-card" href="https://rohergo.github.io/orquesta-sinfonica-upm/#noticias">
+        <img src="https://live.staticflickr.com/65535/55032049153_a276039245_b.jpg" alt="Entrevista director">
+        <div class="related-card-body">
+          <div class="related-card-tag">Entrevista</div>
+          <div class="related-card-title">«Hacer música en la universidad es construir comunidad»</div>
+          <div class="related-card-date">15 Abr 2026</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-brand">Orquesta Sinfónica UPM</span>
+    <span class="footer-copy">© 2026 · Universidad Politécnica de Madrid</span>
+  </div>
+</footer>
+
+<script>
+  const blocks = document.querySelectorAll('.section-block');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  blocks.forEach(b => io.observe(b));
+</script>
+</body>
+</html>
