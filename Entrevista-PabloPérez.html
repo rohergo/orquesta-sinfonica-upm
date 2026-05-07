@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entrevista a Pablo Pérez — Orquesta Sinfónica UPM</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:         #0a0a0a;
+    --bg-card:    #111111;
+    --bg-section: #0f0f0f;
+    --border:     rgba(255,255,255,0.08);
+    --text:       #e8e8e8;
+    --text-muted: #888;
+    --text-dim:   #555;
+    --gold:       #c8a96e;
+    --gold-soft:  rgba(200,169,110,0.13);
+    --white:      #ffffff;
+    --nav-h:      72px;
+    --radius:     4px;
+    --max:        740px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: var(--nav-h);
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem; z-index: 100;
+  }
+  .nav-logo { display: flex; flex-direction: column; gap: 1px; text-decoration: none; }
+  .nav-logo-main { font-size: 0.88rem; font-weight: 700; color: var(--white); }
+  .nav-logo-sub  { font-size: 0.65rem; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+  .nav-links { display: flex; align-items: center; gap: 0.2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.78rem; font-weight: 500; color: var(--text-muted);
+    text-decoration: none; padding: 0.4rem 0.75rem; border-radius: var(--radius);
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+  .nav-links .cta {
+    background: var(--white); color: var(--bg) !important;
+    font-weight: 700; padding: 0.45rem 1rem; margin-left: 0.5rem;
+  }
+  .nav-links .cta:hover { opacity: 0.85; background: var(--white) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    margin-top: var(--nav-h);
+    position: relative; height: 62vh; min-height: 400px;
+    overflow: hidden; display: flex; align-items: flex-end;
+  }
+  .hero-img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center 20%;
+    filter: brightness(0.32);
+  }
+  .hero-gradient {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(10,10,10,0.3) 45%,
+      rgba(10,10,10,0.88) 78%,
+      var(--bg) 100%);
+  }
+  .hero-content {
+    position: relative; width: 100%;
+    max-width: calc(var(--max) + 4rem);
+    margin: 0 auto; padding: 0 2rem 3.5rem;
+  }
+  .hero-tag {
+    display: inline-block; font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);
+    border: 1px solid rgba(200,169,110,0.4); border-radius: 2px;
+    padding: 0.25rem 0.6rem; margin-bottom: 1.1rem;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.9rem, 4.5vw, 3.2rem); font-weight: 700;
+    color: var(--white); line-height: 1.1; margin-bottom: 1rem; max-width: 680px;
+  }
+  .hero-title em { font-style: italic; color: rgba(255,255,255,0.72); }
+  .hero-meta { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .hero-meta-item { font-size: 0.8rem; color: var(--text-muted); }
+  .hero-meta-item strong { color: var(--text); font-weight: 500; }
+  .hero-meta-sep { width: 1px; height: 14px; background: var(--border); }
+
+  /* ── LAYOUT ── */
+  .article-wrap { max-width: var(--max); margin: 0 auto; padding: 3rem 2rem 5rem; }
+
+  .back-link {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.78rem; font-weight: 600; color: var(--text-muted);
+    text-decoration: none; margin-bottom: 2.5rem; transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--white); }
+
+  /* ── LEAD ── */
+  .lead {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.18rem; font-style: italic; font-weight: 400;
+    color: rgba(232,232,232,0.85); line-height: 1.72;
+    border-left: 2px solid var(--gold); padding-left: 1.4rem;
+    margin-bottom: 3.5rem;
+  }
+
+  /* ── INTERVIEW BLOCK ── */
+  .interview { display: flex; flex-direction: column; gap: 0; }
+
+  .qa-block {
+    opacity: 0; transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    margin-bottom: 0;
+  }
+  .qa-block.visible { opacity: 1; transform: translateY(0); }
+
+  /* Pregunta */
+  .question {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 0 1rem;
+    padding: 2rem 0 1rem;
+    border-top: 1px solid var(--border);
+    align-items: start;
+  }
+  .question:first-child { border-top: none; padding-top: 0; }
+  .q-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700; color: var(--text-muted);
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .q-body {}
+  .q-name {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.35rem;
+  }
+  .q-text {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.1rem; font-weight: 700; color: var(--white);
+    line-height: 1.4;
+  }
+
+  /* Respuesta */
+  .answer {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 0 1rem;
+    padding: 1.2rem 0 0.5rem;
+    align-items: start;
+  }
+  .a-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--gold-soft);
+    border: 1px solid rgba(200,169,110,0.28);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700; font-style: italic;
+    color: var(--gold); flex-shrink: 0; margin-top: 2px;
+  }
+  .a-body {}
+  .a-name {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 0.35rem;
+  }
+  .a-text {
+    font-size: 1rem; color: var(--text); line-height: 1.78;
+  }
+  .a-text p { margin-bottom: 0.9rem; }
+  .a-text p:last-child { margin-bottom: 0; }
+
+  /* ── PULLQUOTE ── */
+  .pullquote {
+    margin: 2.8rem 0; padding: 1.8rem 2rem;
+    background: var(--bg-card);
+    border-top: 1px solid var(--gold);
+    border-bottom: 1px solid rgba(200,169,110,0.2);
+    position: relative;
+    opacity: 0; transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .pullquote.visible { opacity: 1; transform: translateY(0); }
+  .pullquote::before {
+    content: '\201C'; position: absolute; top: -0.3rem; left: 1.5rem;
+    font-family: 'Playfair Display', serif; font-size: 5rem; line-height: 1;
+    color: var(--gold); opacity: 0.14;
+  }
+  .pullquote p {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.18rem; font-style: italic;
+    color: rgba(232,232,232,0.9); line-height: 1.65; position: relative;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex; align-items: center; gap: 0.8rem;
+    margin: 0.5rem 0; opacity: 0.15;
+  }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--text); }
+  .divider span { font-size: 0.5rem; letter-spacing: 0.3em; }
+
+  /* ── AUTHOR BOX ── */
+  .authors-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    margin-top: 3.5rem;
+    opacity: 0; transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .authors-row.visible { opacity: 1; transform: translateY(0); }
+  .author-box {
+    padding: 1.4rem 1.6rem;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .author-avatar-lg {
+    width: 46px; height: 46px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; font-weight: 700; flex-shrink: 0;
+  }
+  .av-interviewer {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--text-muted);
+  }
+  .av-interviewed {
+    background: var(--gold-soft);
+    border: 1px solid rgba(200,169,110,0.28);
+    color: var(--gold); font-style: italic;
+  }
+  .author-info .author-role {
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.2rem;
+  }
+  .author-info .author-name { font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 0.3rem; }
+  .author-info p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+  /* ── RELATED ── */
+  .related { background: var(--bg-section); border-top: 1px solid var(--border); padding: 4rem 2rem; }
+  .related-inner { max-width: calc(var(--max) + 4rem); margin: 0 auto; }
+  .related-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.5rem; }
+  .related h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--white); margin-bottom: 2rem; }
+  .related-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+  .related-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden; text-decoration: none;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .related-card:hover { border-color: rgba(200,169,110,0.4); transform: translateY(-3px); }
+  .related-card img { width: 100%; height: 160px; object-fit: cover; display: block; filter: brightness(0.7); transition: filter 0.3s; }
+  .related-card:hover img { filter: brightness(0.9); }
+  .related-card-body { padding: 1.1rem; }
+  .related-card-tag { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.35rem; }
+  .related-card-title { font-size: 0.92rem; font-weight: 600; color: var(--white); line-height: 1.35; margin-bottom: 0.35rem; }
+  .related-card-date { font-size: 0.7rem; color: var(--text-dim); }
+
+  /* ── FOOTER ── */
+  footer { background: #060606; border-top: 1px solid var(--border); padding: 2.5rem 2rem; }
+  .footer-inner {
+    max-width: calc(var(--max) + 4rem); margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-brand { font-size: 0.88rem; font-weight: 700; color: var(--text-muted); }
+  .footer-copy  { font-size: 0.72rem; color: var(--text-dim); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    nav { padding: 0 1.2rem; }
+    .nav-links { display: none; }
+    .hero-content, .article-wrap, .related { padding-left: 1.2rem; padding-right: 1.2rem; }
+    .authors-row { grid-template-columns: 1fr; }
+    .author-box { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://rohergo.github.io/orquesta-sinfonica-upm/#" class="nav-logo">
+    <span class="nav-logo-main">Sinfónica UPM</span>
+    <span class="nav-logo-sub">Orquesta Universitaria</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://rohergo.github.io/orquesta-sinfonica-upm/#conciertos">Conciertos</a></li>
+    <li><a href="https://rohergo.github.io/orquesta-sinfonica-upm/#noticias">Noticias</a></li>
+    <li><a href="https://rohergo.github.io/orquesta-sinfonica-upm/#galeria">Galería</a></li>
+    <li><a href="https://rohergo.github.io/orquesta-sinfonica-upm/#orquesta">La Orquesta</a></li>
+    <li><a href="https://rohergo.github.io/orquesta-sinfonica-upm/#media">Medios</a></li>
+    <li><a href="https://upm.koobin.es" class="cta">Comprar Entradas</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <img class="hero-img"
+    src="https://live.staticflickr.com/65535/55032049153_a276039245_b.jpg"
+    alt="Director de orquesta — Orquesta Sinfónica UPM">
+  <div class="hero-gradient"></div>
+  <div class="hero-content">
+    <span class="hero-tag">Entrevista · La Orquesta</span>
+    <h1 class="hero-title">
+      «Hacer música aquí es un acto<br>de <em>voluntad y de comunidad</em>»
+    </h1>
+    <div class="hero-meta">
+      <span class="hero-meta-item">Entrevista a <strong>Pablo Pérez</strong>, Presidente de la Orquesta</span>
+      <div class="hero-meta-sep"></div>
+      <span class="hero-meta-item">Por <strong>Rodrigo Hernán</strong></span>
+      <div class="hero-meta-sep"></div>
+      <span class="hero-meta-item">Mayo 2026</span>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLE -->
+<div class="article-wrap">
+
+  <a href="https://rohergo.github.io/orquesta-sinfonica-upm/#noticias" class="back-link">
+    ← Volver a Noticias
+  </a>
+
+  <p class="lead">
+    Pablo Pérez lleva tres años al frente de la Asociación Orquesta Sinfónica UPM, el proyecto que él mismo ayudó a fundar. Nos recibe entre ensayo y ensayo para hablar de lo cotidiano, de los grandes conciertos, de los compañeros que hacen posible todo esto —y de la ambición que ya mira más allá de Madrid.
+  </p>
+
+  <div class="interview">
+
+    <!-- P1 -->
+    <div class="qa-block">
+      <div class="question">
+        <div class="q-avatar">R</div>
+        <div class="q-body">
+          <div class="q-name">Rodrigo Hernán</div>
+          <p class="q-text">Pablo, cuéntanos cómo es una semana normal en la Orquesta. ¿Qué implica llevar esto por dentro?</p>
+        </div>
+      </div>
+      <div class="answer">
+        <div class="a-avatar">P</div>
+        <div class="a-body">
+          <div class="a-name">Pablo Pérez · Presidente</div>
+          <div class="a-text">
+            <p>Una semana normal gira en torno al ensayo del domingo por la mañana, que es nuestra cita fija en la ETSIT de Caminos, Canales y Puertos, en el edificio Retiro. Es nuestro hogar habitual: un espacio que conocemos bien y donde la orquesta ha encontrado su sonido. A veces también nos reunimos en la residencia Lucas Olázabal de la UPM, en Cercedilla, que nos permite trabajar en un entorno diferente, más recogido, muy útil para ensayos de sección o encuentros de convivencia.</p>
+            <p>Cuando se acerca un concierto importante, la cosa se intensifica. Pasamos a ensayar sábado y domingo, mañana y tarde, y si la semana previa lo requiere, también el viernes por la tarde. Pero más allá del ensayo hay toda una logística invisible: coordinar con el director, reservar los espacios, gestionar el material orquestal, las comunicaciones con socios y colaboradores... Detrás de cada concierto hay semanas de trabajo administrativo que el público no ve, hecho por un equipo pequeño pero absolutamente comprometido. Y eso es lo que más me enorgullece: que nadie lo hace porque tenga que hacerlo. Lo hace porque quiere.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"><span>✦</span></div>
+
+    <!-- P2 -->
+    <div class="qa-block">
+      <div class="question">
+        <div class="q-avatar">R</div>
+        <div class="q-body">
+          <div class="q-name">Rodrigo Hernán</div>
+          <p class="q-text">Hace tres años formasteis la Asociación de forma oficial. ¿Cómo fue ese proceso? ¿Qué os llevó a dar ese paso?</p>
+        </div>
+      </div>
+      <div class="answer">
+        <div class="a-avatar">P</div>
+        <div class="a-body">
+          <div class="a-name">Pablo Pérez · Presidente</div>
+          <div class="a-text">
+            <p>La Orquesta existía antes, pero funcionaba de manera más informal. Llegó un momento en que el nivel artístico que queríamos alcanzar, los proyectos que teníamos en mente, simplemente no cabían en esa estructura. Necesitábamos poder firmar contratos con auditorios, gestionar presupuestos con garantías, emitir facturas... todas esas cosas que hacen que un proyecto musical sea sostenible en el tiempo.</p>
+            <p>Así que nos pusimos manos a la obra: redactamos los estatutos, constituimos la Junta Directiva, tramitamos el registro. Fue un proceso que llevó varios meses, pero que cambió completamente la solidez del proyecto. Hoy tenemos una estructura real, y eso nos abre puertas que antes estaban cerradas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <blockquote class="pullquote">
+      <p>«Necesitábamos poder firmar contratos, gestionar presupuestos, emitir facturas... todo lo que hace que un proyecto musical sea sostenible. Constituir la Asociación fue el momento en que esto dejó de ser una ilusión y se convirtió en una realidad duradera.»</p>
+    </blockquote>
+
+    <!-- P3 -->
+    <div class="qa-block">
+      <div class="question">
+        <div class="q-avatar">R</div>
+        <div class="q-body">
+          <div class="q-name">Rodrigo Hernán</div>
+          <p class="q-text">¿Cómo es la relación con la Universidad Politécnica? Da la impresión de que os apoyan bastante.</p>
+        </div>
+      </div>
+      <div class="answer">
+        <div class="a-avatar">P</div>
+        <div class="a-body">
+          <div class="a-name">Pablo Pérez · Presidente</div>
+          <div class="a-text">
+            <p>Tenemos una suerte enorme con la UPM, hay que decirlo claramente. Desde el principio entendieron que la Orquesta no es solo una actividad extracurricular más, sino un proyecto que da visibilidad a la universidad y que enriquece la vida de sus estudiantes de una manera que no ofrece ninguna asignatura. Eso lo han valorado desde el rectorado y desde la Fundación General.</p>
+            <p>Nos ceden espacios para ensayar, nos apoyan en la comunicación institucional, y sobre todo nos respaldan cuando queremos hacer algo grande. Cuando les dijimos que queríamos actuar en el Auditorio Nacional, no nos pusieron trabas: nos ayudaron. Esa actitud, en una universidad de ingeniería, no es para nada obvia. Es un lujo que no damos por sentado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"><span>✦</span></div>
+
+    <!-- P4 -->
+    <div class="qa-block">
+      <div class="question">
+        <div class="q-avatar">R</div>
+        <div class="q-body">
+          <div class="q-name">Rodrigo Hernán</div>
+          <p class="q-text">Hablemos de conciertos concretos. El Doble Concierto de Brahms con Iago Domínguez y Raquel Areal fue algo especial. ¿Qué recuerdas de esa noche?</p>
+        </div>
+      </div>
+      <div class="answer">
+        <div class="a-avatar">P</div>
+        <div class="a-body">
+          <div class="a-name">Pablo Pérez · Presidente</div>
+          <div class="a-text">
+            <p>Esa noche fue un antes y un después para nosotros. El Doble Concierto de Brahms es una obra de una exigencia enorme, tanto para los solistas como para la orquesta. Tener a Iago Domínguez al violín y a Raquel Areal al violonchelo fue un privilegio absoluto: son dos músicos de primer nivel, con una complicidad en el escenario que se transmite de inmediato al público.</p>
+            <p>Lo que me quedó grabado fue la reacción de la sala al final del primer movimiento. Ese silencio que hay antes de los aplausos, ese instante en que el público retiene el aliento... es el mejor indicador de que algo ha funcionado de verdad. Esa noche lo tuvimos. Y la orquesta lo había conseguido junto a ellos, no como acompañante, sino como protagonista.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- P5 -->
+    <div class="qa-block">
+      <div class="question">
+        <div class="q-avatar">R</div>
+        <div class="q-body">
+          <div class="q-name">Rodrigo Hernán</div>
+          <p class="q-text">Este año habéis programado la Sexta Sinfonía de Tchaikovsky, la Patética. Es una obra que no se afronta a la ligera. ¿Cómo lo estáis viviendo?</p>
+        </div>
+      </div>
+      <div class="answer">
+        <div class="a-avatar">P</div>
+        <div class="a-body">
+          <div class="a-name">Pablo Pérez · Presidente</div>
+          <div class="a-text">
+            <p>Con mucho respeto y con mucha emoción, en igual medida. La Patética es una de las grandes cumbres del repertorio sinfónico. Es una obra que exige técnica, pero sobre todo exige madurez musical y una capacidad de entrega colectiva que no se consigue de un día para otro. Son años de trabajo los que permiten abordar algo así.</p>
+            <p>Lo interesante es que los músicos llevan meses con la partitura, analizándola, hablando sobre ella, escuchando grabaciones de referencia. Hay una implicación emocional que va más allá del ensayo técnico. Cuando subes al escenario con esa preparación, la música sale de otra manera. Estoy convencido de que va a ser un concierto memorable.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <blockquote class="pullquote">
+      <p>«La Patética de Tchaikovsky exige técnica, pero sobre todo madurez musical y entrega colectiva. Llevamos meses con ella: analizándola, hablando sobre ella. Cuando subes al escenario con esa preparación, la música sale de otra manera.»</p>
+    </blockquote>
+
+    <!-- P6 -->
+    <div class="qa-block">
+      <div class="question">
+        <div class="q-avatar">R</div>
+        <div class="q-body">
+          <div class="q-name">Rodrigo Hernán</div>
+          <p class="q-text">La colaboración con el Coro UPM y con Javier Corcuera es cada vez más frecuente. ¿Qué aporta tener un coro de ese nivel junto a la orquesta?</p>
+        </div>
+      </div>
+      <div class="answer">
+        <div class="a-avatar">P</div>
+        <div class="a-body">
+          <div class="a-name">Pablo Pérez · Presidente</div>
+          <div class="a-text">
+            <p>El Coro UPM es una joya que a veces no recibe todo el reconocimiento que merece. Javier Corcuera ha construido un ensemble vocal de altísimo nivel, con una homogeneidad de sonido y una afinación que muchos coros profesionales envidiarían. Trabajar con ellos es siempre un placer y un estímulo para la propia orquesta.</p>
+            <p>Cuando tienes al coro detrás en el escenario, algo cambia en los músicos. Hay una energía diferente, una responsabilidad compartida. Y para el público la experiencia es de otro orden: la masa sonora de orquesta y coro juntos es simplemente emocionante de una manera que ningún instrumento solo puede igualar. Esperamos que esta colaboración siga creciendo en el futuro, porque hay un repertorio maravilloso por explorar juntos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"><span>✦</span></div>
+
+    <!-- P7 -->
+    <div class="qa-block">
+      <div class="question">
+        <div class="q-avatar">R</div>
+        <div class="q-body">
+          <div class="q-name">Rodrigo Hernán</div>
+          <p class="q-text">Háblanos de los músicos. ¿Quiénes son los que llenan los atriles cada sábado?</p>
+        </div>
+      </div>
+      <div class="answer">
+        <div class="a-avatar">P</div>
+        <div class="a-body">
+          <div class="a-name">Pablo Pérez · Presidente</div>
+          <div class="a-text">
+            <p>Son estudiantes de la UPM, en su gran mayoría. Ingenieros aeronáuticos, de telecomunicaciones, de caminos, de industriales, arquitectos, informáticos... gente que ha llegado a la universidad a estudiar algo aparentemente muy alejado de la música y que sin embargo lleva años tocando su instrumento y no quiere dejarlo. La Orquesta les da la posibilidad de seguir haciéndolo a un nivel serio, con repertorio de verdad, en escenarios de verdad.</p>
+            <p>Lo que más me impresiona de ellos es la capacidad que tienen para compaginar una carrera exigente con los ensayos y los compromisos de la Orquesta. No es fácil. Hay semanas de exámenes en las que la situación es complicada. Pero siguen ahí, cada sábado, con la partitura bajo el brazo. Eso dice mucho de su carácter y de lo que la Orquesta significa para ellos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <blockquote class="pullquote">
+      <p>«Son ingenieros, arquitectos, informáticos... que llevan años tocando su instrumento y no quieren dejarlo. Lo que más me impresiona es su capacidad para compaginar una carrera exigente con los compromisos de la Orquesta. Siguen ahí, cada sábado, con la partitura bajo el brazo.»</p>
+    </blockquote>
+
+    <!-- P8 -->
+    <div class="qa-block">
+      <div class="question">
+        <div class="q-avatar">R</div>
+        <div class="q-body">
+          <div class="q-name">Rodrigo Hernán</div>
+          <p class="q-text">Para terminar, ¿cuáles son los planes de futuro? ¿Dónde queréis estar en los próximos años?</p>
+        </div>
+      </div>
+      <div class="answer">
+        <div class="a-avatar">P</div>
+        <div class="a-body">
+          <div class="a-name">Pablo Pérez · Presidente</div>
+          <div class="a-text">
+            <p>El objetivo inmediato es consolidar nuestra presencia en Madrid y ampliarla al resto de España. Hay ciudades con auditorios maravillosos, con públicos que responden muy bien a este tipo de proyectos, y con los que nos gustaría establecer colaboraciones estables. Ávila, Alicante, Valencia, Sevilla... hay mucho territorio por recorrer.</p>
+            <p>Pero la ambición a medio plazo es claramente Europa. Somos una orquesta universitaria, y eso nos conecta con una red enorme de orquestas similares en todo el continente. Hay festivales internacionales, intercambios, proyectos conjuntos con otras universidades europeas que queremos explorar. Imaginar a la Sinfónica UPM actuando en Viena, en Berlín o en Ámsterdam no es una fantasía: es un objetivo concreto hacia el que estamos trabajando.</p>
+            <p>La orquesta ha demostrado que puede competir en los mejores escenarios. Ahora se trata de llegar a ellos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /interview -->
+
+  <!-- AUTHORS -->
+  <div class="authors-row">
+    <div class="author-box">
+      <div class="author-avatar-lg av-interviewer">R</div>
+      <div class="author-info">
+        <div class="author-role">Entrevistador</div>
+        <div class="author-name">Rodrigo Hernán</div>
+        <p>Fagotista e Ingeniero Aeroespacial.</p>
+      </div>
+    </div>
+    <div class="author-box">
+      <div class="author-avatar-lg av-interviewed">P</div>
+      <div class="author-info">
+        <div class="author-role">Entrevistado</div>
+        <div class="author-name">Pablo Pérez</div>
+        <p>Presidente de la Asociación Orquesta Sinfónica UPM desde su fundación hace tres años. Estudiante de Ingeniería Industrial en la UPM.</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /article-wrap -->
+
+<!-- RELATED -->
+<section class="related">
+  <div class="related-inner">
+    <div class="related-label">Sigue leyendo</div>
+    <h3>Más noticias y blog</h3>
+    <div class="related-cards">
+      <a class="related-card" href="https://rohergo.github.io/orquesta-sinfonica-upm/#noticias">
+        <img src="https://live.staticflickr.com/65535/55032049118_2c4fb1759a_b.jpg" alt="Concierto Fin de Curso">
+        <div class="related-card-body">
+          <div class="related-card-tag">Noticia</div>
+          <div class="related-card-title">La Sinfónica UPM cierra el curso con Falla y Bizet en el Auditorio Nacional</div>
+          <div class="related-card-date">28 Abr 2026</div>
+        </div>
+      </a>
+      <a class="related-card" href="LaVidaBreve_JorgeHernandez.html">
+        <img src="https://live.staticflickr.com/65535/55032204750_1a9d0cacd6_b.jpg" alt="La Vida Breve">
+        <div class="related-card-body">
+          <div class="related-card-tag">Blog · Análisis</div>
+          <div class="related-card-title">La Vida Breve: Amor, Traición y Destino en la Granada de Falla</div>
+          <div class="related-card-date">2 Abr 2026</div>
+        </div>
+      </a>
+      <a class="related-card" href="https://rohergo.github.io/orquesta-sinfonica-upm/#orquesta">
+        <img src="https://live.staticflickr.com/65535/55031866801_706606e61d_b.jpg" alt="La Orquesta">
+        <div class="related-card-body">
+          <div class="related-card-tag">La Orquesta</div>
+          <div class="related-card-title">Música y ciencia, una misma pasión: quiénes somos</div>
+          <div class="related-card-date">Temporada 2025–26</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-brand">Orquesta Sinfónica UPM</span>
+    <span class="footer-copy">© 2026 · Universidad Politécnica de Madrid</span>
+  </div>
+</footer>
+
+<script>
+  const targets = document.querySelectorAll('.qa-block, .pullquote, .authors-row');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.07 });
+  targets.forEach(t => io.observe(t));
+</script>
+</body>
+</html>
