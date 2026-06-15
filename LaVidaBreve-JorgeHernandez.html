@@ -17,7 +17,7 @@
     --gold:        #c8a96e;
     --gold-soft:   rgba(200,169,110,0.15);
     --white:       #ffffff;
-    --nav-h:       72px;
+    --nav-h:       66px;
     --radius:      4px;
     --max:         720px;
   }
@@ -32,35 +32,72 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    height: var(--nav-h);
-    background: rgba(10,10,10,0.92);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 2.5rem;
-    z-index: 100;
+  /* ── NAVBAR SINFÓNICA UPM ── */
+  .navbar {
+    position: fixed; top:0; left:0; right:0; z-index:1000;
+    height: 66px;
+    display: flex; align-items:center; justify-content:space-between;
+    padding: 0 3rem;
+    background: rgba(32,32,32,0.88);
+    backdrop-filter: blur(18px) saturate(1.3);
+    -webkit-backdrop-filter: blur(18px) saturate(1.3);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: background 0.3s;
+    font-family: 'Neue Haas Grotesk Text','Helvetica Neue','Inter',Helvetica,Arial,sans-serif;
   }
-  .nav-logo { display: flex; flex-direction: column; gap: 1px; text-decoration: none; }
-  .nav-logo-main { font-size: 0.88rem; font-weight: 700; color: var(--white); }
-  .nav-logo-sub  { font-size: 0.65rem; font-weight: 400; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; }
-  .nav-links { display: flex; align-items: center; gap: 0.2rem; list-style: none; }
-  .nav-links a {
-    font-size: 0.78rem; font-weight: 500; color: var(--text-muted);
-    text-decoration: none; padding: 0.4rem 0.75rem; border-radius: var(--radius);
-    letter-spacing: 0.03em; transition: color 0.2s, background 0.2s;
+  .navbar.scrolled { background: rgba(28,28,28,0.98); }
+  .nav-brand {
+    display: flex; align-items:center; gap:0.9rem;
+    text-decoration: none; flex-shrink:0;
   }
-  .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.06); }
-  .nav-links .cta {
-    background: var(--white); color: var(--bg) !important;
-    font-weight: 700; padding: 0.45rem 1rem; margin-left: 0.5rem; transition: opacity 0.2s;
+  .nav-brand .nav-logo { width:36px; height:36px; flex-shrink:0; }
+  .nav-brand-text { display:flex; flex-direction:column; line-height:1.2; }
+  .nav-brand-text .name {
+    font-size:0.8rem; font-weight:700; letter-spacing:0.07em;
+    text-transform:uppercase; color:#f0ece4;
   }
-  .nav-links .cta:hover { opacity: 0.85; background: var(--white) !important; }
+  .navbar .nav-links {
+    display:flex; align-items:center; gap:0.2rem; list-style:none;
+  }
+  .navbar .nav-links a {
+    display:block; padding:0.45rem 0.85rem;
+    font-size:0.7rem; font-weight:500; letter-spacing:0.1em;
+    text-transform:uppercase; text-decoration:none;
+    color:#c8c4bc; transition:color 0.2s;
+  }
+  .navbar .nav-links a:hover { color:#f0ece4; }
+  .navbar .btn-ticket {
+    display:inline-flex; align-items:center; gap:0.55rem;
+    background:#0072BC; color:#fff !important;
+    padding:0.52rem 1.35rem;
+    font-size:0.7rem; font-weight:700;
+    letter-spacing:0.12em; text-transform:uppercase;
+    text-decoration:none; border-radius:1px;
+    transition:background 0.2s; white-space:nowrap;
+  }
+  .navbar .btn-ticket:hover { background:#005a96; }
+  .navbar .btn-ticket svg { flex-shrink:0; }
+  .hamburger {
+    display:none; flex-direction:column; gap:5px; background:none;
+    border:none; cursor:pointer; padding:4px;
+  }
+  .hamburger span {
+    display:block; width:22px; height:1.5px;
+    background:#c8c4bc; transition:all 0.3s;
+  }
+  @media (max-width:960px) {
+    .navbar { padding:0 1.5rem; }
+    .navbar .nav-links { display:none !important; }
+    .navbar .nav-links.open {
+      display:flex !important; flex-direction:column; align-items:flex-start;
+      position:fixed; top:66px; left:0; right:0;
+      background:rgba(28,28,28,0.98); padding:1.5rem;
+      border-bottom:1px solid rgba(255,255,255,0.07); gap:0;
+    }
+    .navbar .nav-links.open li { width:100%; }
+    .navbar .nav-links.open a { padding:0.75rem 0; border-bottom:1px solid rgba(255,255,255,0.04); }
+    .hamburger { display:flex; }
+  }
 
   /* HERO */
   .hero {
@@ -213,19 +250,32 @@
 </head>
 <body>
 
-<nav>
-  <a href="https://sinfonicaupm.es/#" class="nav-logo">
-    <span class="nav-logo-main">SinfÃ³nica UPM</span>
-    <span class="nav-logo-sub">Orquesta Universitaria</span>
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-brand">
+    <img class="nav-logo" src="logo-orquesta.png" alt="Orquesta Sinfónica UPM">
+    <div class="nav-brand-text">
+      <span class="name">Orquesta Sinfónica UPM</span>
+    </div>
   </a>
-  <ul class="nav-links">
-    <li><a href="https://sinfonicaupm.es/#conciertos">Conciertos</a></li>
-    <li><a href="https://sinfonicaupm.es/#noticias">Noticias</a></li>
-    <li><a href="https://sinfonicaupm.es/#galeria">GalerÃ­a</a></li>
-    <li><a href="https://sinfonicaupm.es/#orquesta">La Orquesta</a></li>
-    <li><a href="https://sinfonicaupm.es/#media">Medios</a></li>
-    <li><a href="https://upm.koobin.es" class="cta">Comprar Entradas</a></li>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#conciertos">Conciertos</a></li>
+    <li><a href="archivo-conciertos.html">Archivo</a></li>
+    <li><a href="index.html#noticias">Noticias</a></li>
+    <li><a href="index.html#galeria">Galería</a></li>
+    <li><a href="index.html#orquesta">La Orquesta</a></li>
+    <li><a href="index.html#media">Medios</a></li>
+    <li>
+      <a href="https://upm.koobin.es" target="_blank" rel="noopener noreferrer" class="btn-ticket">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"/>
+        </svg>
+        Comprar Entradas
+      </a>
+    </li>
   </ul>
+  <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <div class="hero">
@@ -356,6 +406,24 @@
   </div>
 </footer>
 
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
 <script>
   const blocks = document.querySelectorAll('.section-block');
   const io = new IntersectionObserver(entries => {
