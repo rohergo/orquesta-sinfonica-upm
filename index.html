@@ -591,8 +591,7 @@
   <a href="#inicio" class="nav-brand">
     <img class="nav-logo" src="logo-orquesta.png" alt="Orquesta Sinfónica UPM">
     <div class="nav-brand-text">
-      <span class="name">Sinfónica UPM</span>
-      <span class="sub">Orquesta Universitaria</span>
+      <span class="name" style="font-size:0.8rem;letter-spacing:0.07em;">Orquesta Sinfónica UPM</span>
     </div>
   </a>
 
@@ -642,74 +641,44 @@
   </div>
 </section>
 
-<!-- ═══ PRÓXIMO CONCIERTO (DESTACADO) ═══ -->
-<section class="section featured-section" id="conciertos">
-  <div class="section-inner">
-    <p class="kicker">Próximo Concierto</p>
-    <h2 class="section-h2">No te lo pierdas</h2>
-    <div class="featured-card">
-      <div class="feat-img">
-        <img
-          src="https://live.staticflickr.com/65535/55032049118_2c4fb1759a_b.jpg"
-          alt="Concierto Fin de Curso — Orquesta Sinfónica UPM en el Auditorio Nacional de Madrid"
-          loading="eager">
-        <div class="feat-img-overlay"></div>
-        <div class="feat-badge">Entradas disponibles</div>
-      </div>
-      <div class="feat-body">
-        <p class="feat-date">7 de Junio de 2026 &nbsp;·&nbsp; 12:00h</p>
-        <h3 class="feat-title">Concierto<br>Fin de Curso</h3>
-        <div class="meta-list">
-          <div class="meta-row">
-            <span class="meta-lbl">Lugar</span>
-            <span class="meta-val">Auditorio Nacional de Música, Madrid</span>
-          </div>
-          <div class="meta-row">
-            <span class="meta-lbl">Con</span>
-            <span class="meta-val">Compañía L'Operamore<br>Coro UPM</span>
-          </div>
-        </div>
-        <div class="program-block">
-          <p class="program-lbl">Programa</p>
-          <div class="program-piece">
-            <span>La Vida Breve</span>
-            <span class="composer">Manuel de Falla</span>
-          </div>
-          <div class="program-piece">
-            <span>Suite nº2 de Carmen</span>
-            <span class="composer">Bizet / arr. Guiraud</span>
-          </div>
-        </div>
-        <a href="https://upm.koobin.es" target="_blank" rel="noopener noreferrer" class="btn-feat">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"/>
-          </svg>
-          Comprar Entradas
+<!-- ═══ PRÓXIMA TEMPORADA ═══ -->
+<section class="section featured-section" id="conciertos" style="padding:0;">
+  <div style="position:relative;height:560px;overflow:hidden;">
+    <img
+      src="concierto-fin-de-curso.jpg"
+      alt="Orquesta Sinfónica UPM en el Auditorio Nacional de Madrid"
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:brightness(0.45);">
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(45,45,45,0.3) 0%,rgba(45,45,45,0.75) 100%);"></div>
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;">
+      <p style="font-size:0.62rem;font-weight:600;letter-spacing:0.55em;text-transform:uppercase;color:var(--blue);margin-bottom:1.2rem;">Ciclo Sinfónico UPM</p>
+      <h2 style="font-size:clamp(2.2rem,6vw,5rem);font-weight:700;letter-spacing:-0.025em;line-height:1;color:var(--off-white);margin-bottom:1.4rem;">Temporada 26/27</h2>
+      <p style="font-size:1rem;font-weight:300;color:var(--gray-1);letter-spacing:0.08em;margin-bottom:2.5rem;">Próximamente anunciaremos la nueva programación.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
+        <a href="archivo-conciertos.html" style="display:inline-flex;align-items:center;gap:0.6rem;padding:0.78rem 2rem;background:transparent;border:1px solid rgba(240,236,228,0.3);color:var(--off-white);font-size:0.72rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:border-color 0.2s;">
+          Ver conciertos pasados
+        </a>
+        <a href="https://www.instagram.com/sinfonicapolitecnica" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.6rem;padding:0.78rem 2rem;background:var(--blue);color:#fff;font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;">
+          Síguenos en Instagram
         </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ CALENDARIO ═══ -->
+<!-- ═══ ARCHIVO ═══ -->
 <section class="section calendar-section">
   <div class="section-inner">
     <p class="kicker">Temporada 2025–26</p>
-    <h2 class="section-h2">Calendario de Conciertos</h2>
+    <h2 class="section-h2">Conciertos de la temporada</h2>
     <div class="concerts-grid">
 
-      <!-- PRÓXIMO -->
       <div class="concert-tile">
         <p class="tile-date">7 Jun 2026 · 12:00h</p>
-        <p class="tile-title">Concierto Fin de Curso</p>
+        <p class="tile-title">Concierto de Fin de Curso</p>
         <p class="tile-venue">Auditorio Nacional de Música · Madrid</p>
-        <div class="tile-tags">
-          <span class="tag live">Entradas disponibles</span>
-          <span class="tag">L'Operamore · Coro UPM</span>
-        </div>
+        <div class="tile-tags"><span class="tag past">Pasado</span><span class="tag">L'Operamore · Coro UPM</span></div>
       </div>
 
-      <!-- PASADOS — temporada 25/26 -->
       <div class="concert-tile">
         <p class="tile-date">21 Feb 2026 · 22:30h</p>
         <p class="tile-title">Sinfonías Enigmáticas</p>
@@ -721,10 +690,7 @@
         <p class="tile-date">21 Dic 2025 · 19:30h</p>
         <p class="tile-title">Gala Lírica UPM</p>
         <p class="tile-venue">Auditorio Manuel de Falla · Las Rozas, Madrid</p>
-        <div class="tile-tags">
-          <span class="tag past">Pasado</span>
-          <span class="tag">Repetición</span>
-        </div>
+        <div class="tile-tags"><span class="tag past">Pasado</span><span class="tag">Repetición</span></div>
       </div>
 
       <div class="concert-tile">
@@ -734,6 +700,9 @@
         <div class="tile-tags"><span class="tag past">Pasado</span></div>
       </div>
 
+    </div>
+    <div style="margin-top:2rem;">
+      <a href="archivo-conciertos.html" class="btn-outline">Ver archivo completo de conciertos →</a>
     </div>
   </div>
 </section>
@@ -746,17 +715,23 @@
     <div class="news-grid">
 
       <article class="news-card">
-        <div class="news-img">
-          <img src="https://live.staticflickr.com/65535/55031867146_6f88fe8887_b.jpg"
-               alt="Concierto Fin de Curso" loading="lazy">
-        </div>
+        <a href="cronica-fin-de-curso.html">
+          <div class="news-img">
+            <img src="concierto-fin-de-curso.jpg"
+                 alt="Concierto de Fin de Curso — Orquesta Sinfónica UPM" loading="lazy">
+          </div>
+        </a>
         <div class="news-body">
-          <p class="news-cat">Noticia</p>
-          <h3 class="news-title">La Sinfónica UPM cierra el curso con Falla y Bizet en el Auditorio Nacional</h3>
-          <p class="news-excerpt">El 7 de junio, la Orquesta Sinfónica UPM celebrará su Concierto Fin de Curso en el Auditorio Nacional junto a la Compañía L'Operamore y el Coro UPM, con un programa centrado en la música española e ibérica del siglo XX.</p>
+          <p class="news-cat">Crónica · Ciclo Sinfónico UPM</p>
+          <h3 class="news-title">
+            <a href="cronica-fin-de-curso.html" style="text-decoration:none;color:inherit;">
+              La Orquesta cierra por todo lo alto el Ciclo Sinfónico UPM
+            </a>
+          </h3>
+          <p class="news-excerpt">Hay despedidas que se limitan a bajar el telón y otras que lo levantan una última vez para enseñarlo todo. La mañana del 7 de junio, la Sinfónica UPM, el Coro UPM y L'Operamore eligieron la segunda opción en la Sala Sinfónica del Auditorio Nacional.</p>
           <div class="news-footer">
-            <span class="news-date">28 Abr 2026</span>
-            <a href="#" class="news-link">Leer más →</a>
+            <span class="news-date">7 Jun 2026</span>
+            <a href="cronica-fin-de-curso.html" class="news-link">Leer más →</a>
           </div>
         </div>
       </article>
