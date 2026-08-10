@@ -291,6 +291,84 @@
     }
     .btn-feat:hover { background:var(--blue-dk); transform:translateY(-1px); }
 
+    /* ── TEMPORADA CARRUSEL ─────────────────────────────────── */
+    .season-carousel { background:var(--bg-2); }
+
+    .carousel-head {
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:1.5rem; margin-bottom:2.5rem; flex-wrap:wrap;
+    }
+    .carousel-link {
+      display:inline-flex; align-items:center; gap:0.5rem;
+      font-size:0.72rem; font-weight:600; letter-spacing:0.12em;
+      text-transform:uppercase; color:var(--gray-1); text-decoration:none;
+      transition:color 0.2s, gap 0.2s;
+    }
+    .carousel-link:hover { color:var(--off-white); gap:0.75rem; }
+
+    .carousel-viewport {
+      position:relative; width:100%; aspect-ratio:2.2/1; min-height:420px;
+      border-radius:6px; overflow:hidden; border:1px solid rgba(255,255,255,0.07);
+      background:var(--bg-3); touch-action:pan-y;
+    }
+    .carousel-track { display:flex; width:100%; height:100%; will-change:transform; }
+    .carousel-slide { position:relative; width:100%; height:100%; flex:0 0 100%; display:flex; }
+
+    .slide-info {
+      flex:1 1 56%; min-width:0; display:flex; flex-direction:column;
+      justify-content:center; padding:3.2rem 3rem; box-sizing:border-box;
+      border-right:1px solid rgba(255,255,255,0.06); overflow-y:auto;
+    }
+    .slide-eyebrow {
+      font-size:0.62rem; font-weight:600; letter-spacing:0.28em;
+      text-transform:uppercase; color:var(--blue); margin-bottom:1rem;
+    }
+    .slide-eyebrow .eyebrow-sep { color:var(--gray-3); }
+    .slide-title {
+      font-weight:700; font-size:clamp(1.4rem,2.6vw,2.3rem); line-height:1.2;
+      letter-spacing:-0.015em; color:var(--off-white); margin:0;
+    }
+    .slide-ensembles { margin-top:1rem; font-size:0.88rem; color:var(--gray-1); line-height:1.6; }
+    .slide-director { margin-top:0.8rem; font-size:0.82rem; color:var(--gray-1); }
+    .slide-director span { color:var(--blue); font-weight:500; }
+    .slide-programme { margin-top:1.2rem; font-size:0.82rem; color:var(--gray-2); line-height:1.7; max-width:480px; }
+    .slide-cta { margin-top:1.6rem; }
+
+    .slide-people {
+      flex:1 1 44%; min-width:0; display:flex; align-items:center; justify-content:center;
+      gap:1.2rem; padding:2.5rem; box-sizing:border-box; background:var(--bg-4); flex-wrap:wrap;
+    }
+    .person-card { flex:1 1 0; min-width:110px; max-width:180px; display:flex; flex-direction:column; align-items:center; gap:0.7rem; }
+    .person-photo { width:100%; aspect-ratio:3/4; border-radius:4px; overflow:hidden; border:1px solid rgba(255,255,255,0.08); }
+    .person-photo img { width:100%; height:100%; object-fit:cover; filter:brightness(0.88) saturate(0.75); user-select:none; pointer-events:none; }
+    .person-name { font-size:0.8rem; font-weight:700; color:var(--off-white); text-align:center; line-height:1.3; }
+    .person-role { font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--blue); margin-top:0.25rem; text-align:center; }
+
+    .carousel-nav {
+      position:absolute; top:50%; transform:translateY(-50%);
+      width:44px; height:44px; border-radius:999px; border:1px solid rgba(255,255,255,0.12);
+      background:rgba(20,20,20,0.6); backdrop-filter:blur(6px); color:var(--off-white);
+      display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:2;
+      transition:background 0.2s, border-color 0.2s;
+    }
+    .carousel-nav:hover { background:rgba(20,20,20,0.85); border-color:rgba(255,255,255,0.25); }
+    .carousel-prev { left:18px; }
+    .carousel-next { right:18px; }
+
+    .carousel-dots { position:absolute; bottom:20px; left:0; right:0; display:flex; justify-content:center; gap:8px; z-index:2; }
+    .carousel-dot {
+      width:8px; height:8px; border-radius:999px; border:none; padding:0; cursor:pointer;
+      background:rgba(240,236,228,0.35); transition:width 0.26s ease, background 0.2s ease;
+    }
+    .carousel-dot.active { width:22px; background:var(--blue); }
+
+    @media (max-width:960px) {
+      .carousel-viewport { aspect-ratio:auto; min-height:0; }
+      .carousel-slide { flex-direction:column; height:auto; }
+      .slide-info { border-right:none; border-bottom:1px solid rgba(255,255,255,0.06); padding:2rem 1.5rem; }
+      .slide-people { padding:1.5rem; }
+    }
+
     /* ── CONCERT CALENDAR ───────────────────────────────────── */
     .calendar-section { background:var(--bg); }
 
@@ -661,40 +739,101 @@
   </a>
 </section>
 
-<!-- ═══ ARCHIVO ═══ -->
-<section class="section calendar-section">
+<!-- ═══ TEMPORADA CARRUSEL ═══ -->
+<section class="section season-carousel">
   <div class="section-inner">
-    <p class="kicker">Temporada 2025–26</p>
+    <div class="carousel-head">
+      <h2 class="section-h2" style="margin-bottom:0;">Temporada 2026 · 2027</h2>
+      <a href="#calendario-completo" class="carousel-link">Ver calendario completo →</a>
+    </div>
+
+    <div class="carousel-viewport" id="seasonCarousel">
+      <div class="carousel-track" id="carouselTrack">
+
+        <div class="carousel-slide">
+          <div class="slide-info">
+            <p class="slide-eyebrow">14 FEB 2027<span class="eyebrow-sep"> · </span>12:00h</p>
+            <h3 class="slide-title">América: tradición, identidad y nuevo mundo</h3>
+            <div class="slide-ensembles">Orquesta Sinfónica UPM</div>
+            <p class="slide-director">Director: <span>Marcos Enrique Romero Gil</span></p>
+            <p class="slide-programme">Ballet La Estancia, Op. 8 (Ginastera) · Danzón nº 2 (Márquez) · Glosa sinfónica margariteña (Carreño) · Batuque, danza de negros (Fernández) · Rhapsody in Blue (Gershwin) · Ciranda das Sete Notas (Villa-Lobos) · Mambo, West Side Story (Bernstein)</p>
+            <div class="slide-cta">
+              <a href="https://upm.koobin.es" target="_blank" rel="noopener noreferrer" class="btn-primary">Entradas</a>
+            </div>
+          </div>
+          <div class="slide-people">
+            <div class="person-card">
+              <div class="person-photo"><img src="marcos-romero.jpg" alt="Marcos Enrique Romero Gil" draggable="false"></div>
+              <div><p class="person-name">Marcos Enrique Romero Gil</p><p class="person-role">Director</p></div>
+            </div>
+            <div class="person-card">
+              <div class="person-photo"><img src="susana-gomez.jpg" alt="Susana Gómez Vázquez" draggable="false"></div>
+              <div><p class="person-name">Susana Gómez Vázquez</p><p class="person-role">Piano</p></div>
+            </div>
+            <div class="person-card">
+              <div class="person-photo"><img src="javier-sanz.jpg" alt="Javier Sánz Pascual" draggable="false"></div>
+              <div><p class="person-name">Javier Sánz Pascual</p><p class="person-role">Fagot</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <div class="slide-info">
+            <p class="slide-eyebrow">24 ABR 2027<span class="eyebrow-sep"> · </span>19:30h</p>
+            <h3 class="slide-title">Conmemoración centenario Ciudad Universitaria</h3>
+            <div class="slide-ensembles">
+              <div>Orquesta Sinfónica UPM</div>
+              <div>Coro de la Universidad Politécnica de Madrid</div>
+              <div>Coro de la Universidad Complutense de Madrid</div>
+            </div>
+            <p class="slide-director">Director: <span>Alejandro Cantalapiedra</span></p>
+            <p class="slide-programme">Obertura del festival académico, Op. 80 (Brahms) · Sinfonía nº 9, Op. 125 «Coral» (Beethoven)</p>
+            <div class="slide-cta">
+              <a href="https://upm.koobin.es" target="_blank" rel="noopener noreferrer" class="btn-primary">Entradas</a>
+            </div>
+          </div>
+          <div class="slide-people">
+            <div class="person-card">
+              <div class="person-photo"><img src="alejandro-cantalapiedra.jpg" alt="Alejandro Cantalapiedra" draggable="false"></div>
+              <div><p class="person-name">Alejandro Cantalapiedra</p><p class="person-role">Director</p></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <button class="carousel-nav carousel-prev" id="carouselPrev" aria-label="Anterior">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>
+      </button>
+      <button class="carousel-nav carousel-next" id="carouselNext" aria-label="Siguiente">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg>
+      </button>
+
+      <div class="carousel-dots" id="carouselDots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ARCHIVO ═══ -->
+<section class="section calendar-section" id="calendario-completo">
+  <div class="section-inner">
+    <p class="kicker">Temporada 2026–27</p>
     <h2 class="section-h2">Conciertos de la temporada</h2>
     <div class="concerts-grid">
 
-      <div class="concert-tile">
-        <p class="tile-date">7 Jun 2026 · 12:00h</p>
-        <p class="tile-title">Concierto de Fin de Curso</p>
-        <p class="tile-venue">Auditorio Nacional de Música · Madrid</p>
-        <div class="tile-tags"><span class="tag past">Pasado</span><span class="tag">L'Operamore · Coro UPM</span></div>
-      </div>
+      <a href="https://upm.koobin.es" target="_blank" rel="noopener noreferrer" class="concert-tile" style="text-decoration:none;color:inherit;">
+        <p class="tile-date">14 Feb 2027 · 12:00h</p>
+        <p class="tile-title">América: tradición, identidad y nuevo mundo</p>
+        <p class="tile-venue">Marcos Enrique Romero Gil, director</p>
+        <div class="tile-tags"><span class="tag live">Entradas →</span></div>
+      </a>
 
-      <div class="concert-tile">
-        <p class="tile-date">21 Feb 2026 · 22:30h</p>
-        <p class="tile-title">Sinfonías Enigmáticas</p>
-        <p class="tile-venue">Auditorio Nacional de Música · Madrid</p>
-        <div class="tile-tags"><span class="tag past">Pasado</span></div>
-      </div>
-
-      <div class="concert-tile">
-        <p class="tile-date">21 Dic 2025 · 19:30h</p>
-        <p class="tile-title">Gala Lírica UPM</p>
-        <p class="tile-venue">Auditorio Manuel de Falla · Las Rozas, Madrid</p>
-        <div class="tile-tags"><span class="tag past">Pasado</span><span class="tag">Repetición</span></div>
-      </div>
-
-      <div class="concert-tile">
-        <p class="tile-date">13 Dic 2025 · 22:30h</p>
-        <p class="tile-title">Gala Lírica UPM</p>
-        <p class="tile-venue">Auditorio Nacional de Música · Madrid</p>
-        <div class="tile-tags"><span class="tag past">Pasado</span></div>
-      </div>
+      <a href="https://upm.koobin.es" target="_blank" rel="noopener noreferrer" class="concert-tile" style="text-decoration:none;color:inherit;">
+        <p class="tile-date">24 Abr 2027 · 19:30h</p>
+        <p class="tile-title">Conmemoración centenario Ciudad Universitaria</p>
+        <p class="tile-venue">Alejandro Cantalapiedra, director</p>
+        <div class="tile-tags"><span class="tag live">Entradas →</span></div>
+      </a>
 
     </div>
     <div style="margin-top:2rem;">
@@ -1094,6 +1233,110 @@
     el.style.transition= 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(el);
   });
+
+  // ── TEMPORADA CARRUSEL ──────────────────────────────────────
+  (function seasonCarousel() {
+    const viewport = document.getElementById('seasonCarousel');
+    if (!viewport) return;
+
+    const track   = document.getElementById('carouselTrack');
+    const dotsBox = document.getElementById('carouselDots');
+    const slides  = Array.from(track.children);
+    const n       = slides.length;
+    const AUTOPLAY_MS = 8000;
+
+    let index    = 0;
+    let hover    = false;
+    let dragging = false;
+    let startX   = 0;
+    let deltaX   = 0;
+    let containerWidth = 0;
+    let timer;
+
+    // Build dots
+    const dots = slides.map((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot';
+      dot.setAttribute('aria-label', 'Ir a la diapositiva ' + (i + 1));
+      dot.addEventListener('click', () => goTo(i));
+      dotsBox.appendChild(dot);
+      return dot;
+    });
+
+    function render() {
+      const base = -index * 100;
+      const dragPct = dragging && containerWidth ? (deltaX / containerWidth) * 100 : 0;
+      track.style.transition = dragging ? 'none' : 'transform 520ms cubic-bezier(.4,0,.2,1)';
+      track.style.transform  = `translateX(${base + dragPct}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    }
+
+    function goTo(i) {
+      index = ((i % n) + n) % n;
+      render();
+    }
+    function goNext() { goTo(index + 1); }
+    function goPrev() { goTo(index - 1); }
+
+    document.getElementById('carouselNext').addEventListener('click', goNext);
+    document.getElementById('carouselPrev').addEventListener('click', goPrev);
+
+    function startAutoplay() {
+      clearInterval(timer);
+      timer = setInterval(() => {
+        if (hover || dragging) return;
+        goNext();
+      }, AUTOPLAY_MS);
+    }
+
+    viewport.addEventListener('mouseenter', () => { hover = true; });
+    viewport.addEventListener('mouseleave', () => {
+      hover = false;
+      if (dragging) endDrag();
+    });
+
+    viewport.addEventListener('pointerdown', (e) => {
+      containerWidth = viewport.getBoundingClientRect().width;
+      dragging = true;
+      startX = e.clientX;
+      deltaX = 0;
+      viewport.style.cursor = 'grabbing';
+    });
+    viewport.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      deltaX = e.clientX - startX;
+      render();
+    });
+    viewport.addEventListener('pointerup', endDrag);
+    viewport.addEventListener('pointercancel', endDrag);
+
+    function endDrag() {
+      if (!dragging) return;
+      const threshold = (containerWidth || 1) * 0.12;
+      if (deltaX > threshold) goPrev();
+      else if (deltaX < -threshold) goNext();
+      else render();
+      dragging = false;
+      startX = 0;
+      deltaX = 0;
+      viewport.style.cursor = 'grab';
+    }
+
+    let lastWheel = 0;
+    viewport.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+      e.preventDefault();
+      const now = Date.now();
+      if (now - lastWheel < 500) return;
+      lastWheel = now;
+      if (e.deltaX > 20) goNext();
+      else if (e.deltaX < -20) goPrev();
+    }, { passive: false });
+
+    viewport.style.cursor = 'grab';
+    render();
+    startAutoplay();
+  })();
 </script>
 
 </body>
