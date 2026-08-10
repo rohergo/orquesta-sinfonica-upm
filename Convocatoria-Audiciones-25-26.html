@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Convocatoria de audiciones de la Orquesta Sinfónica UPM — Temporada 2025-2026. Especialidades, envío de solicitud, pasajes orquestales y reglamento.">
+  <title>Convocatoria de Audiciones 25/26 — Orquesta Sinfónica UPM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:      #2d2d2d;
+      --bg-2:    #353535;
+      --bg-3:    #3f3f3f;
+      --off-white:#f0ece4;
+      --gray-1:  #c8c4bc;
+      --gray-2:  #8a8680;
+      --gray-3:  #5a5652;
+      --blue:    #0072BC;
+      --blue-dk: #005a96;
+      --font: 'Neue Haas Grotesk Text','Helvetica Neue','Inter',Helvetica,Arial,sans-serif;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg); color: var(--off-white);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color:inherit; }
+
+    /* ── NAVBAR SINFÓNICA UPM ── */
+    .navbar {
+      position: fixed; top:0; left:0; right:0; z-index:1000;
+      height: 66px;
+      display: flex; align-items:center; justify-content:space-between;
+      padding: 0 3rem;
+      background: rgba(32,32,32,0.88);
+      backdrop-filter: blur(18px) saturate(1.3);
+      -webkit-backdrop-filter: blur(18px) saturate(1.3);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: background 0.3s;
+    }
+    .navbar.scrolled { background: rgba(28,28,28,0.98); }
+    .nav-brand {
+      display: flex; align-items:center; gap:0.9rem;
+      text-decoration: none; flex-shrink:0;
+    }
+    .nav-brand .nav-logo { width:36px; height:36px; flex-shrink:0; }
+    .nav-brand-text { display:flex; flex-direction:column; line-height:1.2; }
+    .nav-brand-text .name {
+      font-size:0.8rem; font-weight:700; letter-spacing:0.07em;
+      text-transform:uppercase; color:var(--off-white);
+    }
+    .navbar .nav-links {
+      display:flex; align-items:center; gap:0.2rem; list-style:none;
+    }
+    .navbar .nav-links a {
+      display:block; padding:0.45rem 0.85rem;
+      font-size:0.7rem; font-weight:500; letter-spacing:0.1em;
+      text-transform:uppercase; text-decoration:none;
+      color:var(--gray-1); transition:color 0.2s;
+    }
+    .navbar .nav-links a:hover { color:var(--off-white); }
+    .navbar .btn-ticket {
+      display:inline-flex; align-items:center; gap:0.55rem;
+      background:var(--blue); color:#fff !important;
+      padding:0.52rem 1.35rem;
+      font-size:0.7rem; font-weight:700;
+      letter-spacing:0.12em; text-transform:uppercase;
+      text-decoration:none; border-radius:1px;
+      transition:background 0.2s; white-space:nowrap;
+    }
+    .navbar .btn-ticket:hover { background:#005a96; }
+    .navbar .btn-ticket svg { flex-shrink:0; }
+    .hamburger {
+      display:none; flex-direction:column; gap:5px; background:none;
+      border:none; cursor:pointer; padding:4px;
+    }
+    .hamburger span {
+      display:block; width:22px; height:1.5px;
+      background:var(--gray-1); transition:all 0.3s;
+    }
+    @media (max-width:960px) {
+      .navbar { padding:0 1.5rem; }
+      .navbar .nav-links { display:none !important; }
+      .navbar .nav-links.open {
+        display:flex !important; flex-direction:column; align-items:flex-start;
+        position:fixed; top:66px; left:0; right:0;
+        background:rgba(28,28,28,0.98); padding:1.5rem;
+        border-bottom:1px solid rgba(255,255,255,0.07); gap:0;
+      }
+      .navbar .nav-links.open li { width:100%; }
+      .navbar .nav-links.open a { padding:0.75rem 0; border-bottom:1px solid rgba(255,255,255,0.04); }
+      .hamburger { display:flex; }
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 5rem 3rem 2.5rem;
+      margin-top: 66px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .page-header-inner { max-width:900px; margin:0 auto; }
+    .kicker {
+      font-size:0.62rem; font-weight:600; letter-spacing:0.5em;
+      text-transform:uppercase; color:var(--blue); margin-bottom:0.7rem;
+    }
+    .page-h1 {
+      font-size:clamp(2rem,4.5vw,3.6rem); font-weight:700;
+      letter-spacing:-0.025em; color:var(--off-white); line-height:1.05;
+    }
+    .page-desc {
+      margin-top:1.2rem; font-size:0.95rem; font-weight:400;
+      color:var(--gray-1); max-width:640px; line-height:1.7;
+    }
+    .quicknav { display:flex; gap:0.6rem; flex-wrap:wrap; margin-top:2rem; }
+    .quicknav a {
+      font-size:0.66rem; font-weight:600; letter-spacing:0.08em;
+      text-transform:uppercase; color:var(--blue); text-decoration:none;
+      padding:0.5rem 0.9rem; border:1px solid rgba(255,255,255,0.1);
+      border-radius:20px; transition:border-color 0.2s, background 0.2s;
+    }
+    .quicknav a:hover { border-color:var(--blue); background:rgba(0,114,188,0.08); }
+
+    /* ── CONTENT ── */
+    .content { max-width:900px; margin:0 auto; padding:0 3rem; }
+    .content-section { padding:3.5rem 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+    .content-section:last-of-type { border-bottom:none; }
+    .section-h2 {
+      font-size:clamp(1.5rem,3vw,2rem); font-weight:700;
+      letter-spacing:-0.02em; color:var(--off-white); margin-bottom:1.4rem;
+    }
+    .content-section p {
+      font-size:0.95rem; font-weight:300; line-height:1.85;
+      color:var(--gray-1); max-width:720px; margin-bottom:1.1rem;
+    }
+    .content-section a { color:var(--blue); text-decoration:underline; text-underline-offset:2px; }
+    .content-section a:hover { color:var(--off-white); }
+    .content-section ul { padding-left:1.3rem; display:flex; flex-direction:column; gap:0.6rem; margin-bottom:1.1rem; }
+    .content-section li {
+      font-size:0.95rem; font-weight:300; line-height:1.7; color:var(--gray-1); max-width:700px;
+    }
+
+    .badge-list { display:flex; flex-wrap:wrap; gap:0.6rem; margin-top:1.5rem; }
+    .badge {
+      font-size:0.72rem; font-weight:600; letter-spacing:0.04em;
+      color:var(--off-white); padding:0.45rem 1rem;
+      border:1px solid rgba(255,255,255,0.14); border-radius:20px;
+    }
+
+    .btn-primary, .btn-outline {
+      display:inline-flex; align-items:center; gap:0.6rem;
+      padding:0.78rem 1.8rem;
+      font-size:0.72rem; font-weight:700; letter-spacing:0.1em;
+      text-transform:uppercase; text-decoration:none !important;
+      margin-top:0.5rem;
+    }
+    .btn-primary { background:var(--blue); color:#fff !important; transition:background 0.2s; }
+    .btn-primary:hover { background:var(--blue-dk); color:#fff !important; }
+    .btn-outline {
+      background:transparent; border:1px solid rgba(240,236,228,0.3); color:var(--off-white) !important;
+      transition:border-color 0.2s;
+    }
+    .btn-outline:hover { border-color:var(--off-white); }
+
+    .inst-grid {
+      display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
+      gap:1px; background:rgba(255,255,255,0.05); margin-top:1.5rem;
+    }
+    .inst-card { background:var(--bg-3); padding:1.6rem 1.7rem; }
+    .inst-card h3 {
+      font-size:1.05rem; font-weight:700; color:var(--blue); margin-bottom:0.9rem;
+    }
+    .inst-card ul { padding-left:1.1rem; gap:0.5rem; margin-bottom:0; }
+    .inst-card li { font-size:0.82rem; color:var(--gray-2); line-height:1.55; }
+
+    .reg-part { margin:3rem 0; }
+    .reg-part-title {
+      font-size:1.2rem; font-weight:700; color:var(--off-white);
+      border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.9rem; margin-bottom:1.6rem;
+    }
+    .reg-article { margin-bottom:1.8rem; }
+    .reg-article h4 {
+      font-size:0.98rem; font-weight:700; color:var(--blue); margin-bottom:0.6rem;
+    }
+
+    figure.photo-break {
+      margin:3.5rem 0; position:relative; border-radius:4px; overflow:hidden;
+    }
+    figure.photo-break img {
+      width:100%; height:340px; object-fit:cover; display:block; filter:brightness(0.6) saturate(0.75);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background:#1c1c1c; padding:2rem 3rem;
+      border-top:1px solid rgba(255,255,255,0.05);
+      display:flex; justify-content:space-between; align-items:center;
+    }
+    .footer-copy { font-size:0.67rem; color:var(--gray-3); }
+    .footer-link {
+      font-size:0.67rem; color:var(--gray-3); text-decoration:none; transition:color 0.2s;
+    }
+    .footer-link:hover { color:var(--gray-1); }
+
+    @media (max-width:700px) {
+      .navbar { padding:0 1.5rem; }
+      .page-header { padding:3rem 1.5rem 2rem; }
+      .content { padding:0 1.5rem; }
+      .inst-grid { grid-template-columns:1fr; }
+      footer { flex-direction:column; gap:0.8rem; text-align:center; padding:1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-brand">
+    <img class="nav-logo" src="logo-orquesta.png" alt="Orquesta Sinfónica UPM">
+    <div class="nav-brand-text">
+      <span class="name">Orquesta Sinfónica UPM</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#conciertos">Conciertos</a></li>
+    <li><a href="archivo-conciertos.html">Archivo</a></li>
+    <li><a href="index.html#noticias">Noticias</a></li>
+    <li><a href="index.html#galeria">Galería</a></li>
+    <li><a href="index.html#orquesta">La Orquesta</a></li>
+    <li><a href="index.html#media">Medios</a></li>
+    <li>
+      <a href="https://upm.koobin.es" target="_blank" rel="noopener noreferrer" class="btn-ticket">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"/>
+        </svg>
+        Comprar Entradas
+      </a>
+    </li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HEADER -->
+<header class="page-header" id="top">
+  <div class="page-header-inner">
+    <p class="kicker">Convocatoria · Temporada 2025-2026</p>
+    <h1 class="page-h1">Audiciones Orquesta Sinfónica UPM</h1>
+    <p class="page-desc">
+      Se convocan audiciones para formar parte de la Orquesta Sinfónica de la Universidad Politécnica de Madrid. 13 especialidades convocadas · Pruebas online · Solicitud antes del domingo 30 de agosto de 2026 · 12:00h.
+    </p>
+    <div class="quicknav">
+      <a href="#convocatoria">Convocatoria</a>
+      <a href="#anexo-i">Anexo I · Pasajes</a>
+      <a href="#anexo-ii">Anexo II · Reglamento</a>
+    </div>
+  </div>
+</header>
+
+<!-- CONTENT -->
+<main class="content">
+
+  <section class="content-section" id="convocatoria">
+    <h2 class="section-h2">Especialidades</h2>
+    <p>Se convocan audiciones para formar parte de la Orquesta Sinfónica de la Universidad Politécnica de Madrid en las siguientes especialidades:</p>
+    <div class="badge-list">
+      <span class="badge">Clarinete</span>
+      <span class="badge">Contrabajo</span>
+      <span class="badge">Fagot</span>
+      <span class="badge">Flauta</span>
+      <span class="badge">Oboe</span>
+      <span class="badge">Percusión</span>
+      <span class="badge">Trombón</span>
+      <span class="badge">Trompa</span>
+      <span class="badge">Trompeta</span>
+      <span class="badge">Tuba</span>
+      <span class="badge">Viola</span>
+      <span class="badge">Violín</span>
+      <span class="badge">Violonchelo</span>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2 class="section-h2">Envío de solicitud</h2>
+    <p>Las solicitudes para realizar las pruebas de acceso se enviarán al mail <a href="mailto:orquesta@upm.es">orquesta@upm.es</a> antes del domingo 30 de agosto de 2026 a las 12:00.</p>
+    <p>La solicitud incluirá el formulario de inscripción adjunto rellenado, que puede descargarse en el siguiente enlace:</p>
+    <p>El formulario se enviará junto al vídeo de la prueba, en el mismo envío a <a href="mailto:orquesta@upm.es">orquesta@upm.es</a>.</p>
+    <a href="https://drive.google.com/file/d/1P_Zs0UbDD3XqlT9-cj9sVNMBI1gRchmq/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-outline">Descargar formulario de inscripción</a>
+  </section>
+
+  <section class="content-section">
+    <h2 class="section-h2">Desarrollo de las audiciones</h2>
+    <p>Las audiciones se desarrollarán de manera online, mediante un vídeo. El repertorio para las mismas será una obra libre, sin la necesidad de pianista acompañante, y deberá cubrir un tiempo aproximado de 5 minutos.</p>
+    <p>Además, se pedirán pasajes orquestales correspondientes al repertorio del programa de la orquesta para este curso 25-26. Se pueden consultar los pasajes en el <a href="#anexo-i">anexo final</a>. No se tendrán en cuenta candidaturas para las pruebas que no se presenten con los pasajes orquestales.</p>
+    <p>El vídeo debe grabarse en una sola toma, en el orden que el aspirante quiera. (El vídeo puede ser superior a 5 minutos ya que incluirá la obra libre y los pasajes orquestales sin cortes). Y será enviado al mail <a href="mailto:orquesta@upm.es">orquesta@upm.es</a>.</p>
+  </section>
+
+  <section class="content-section">
+    <h2 class="section-h2">Condiciones para formar parte de la orquesta</h2>
+    <p>Se requerirá de los aspirantes el compromiso de cumplimiento de los siguientes requisitos:</p>
+    <ul>
+      <li>Asistencia regular a la mayoría de los ensayos y a la totalidad de los conciertos.</li>
+      <li>Actitud positiva e interés por el desarrollo de las actividades de la orquesta.</li>
+      <li>Respeto por los estatutos de la Asociación, así como su Reglamento de Régimen Interno.</li>
+    </ul>
+  </section>
+
+  <section class="content-section">
+    <h2 class="section-h2">Ensayos</h2>
+    <p>Los ensayos tendrán lugar cada domingo en horario de 10:30 a 14:00 en Madrid, en nuestra sede cerca de Atocha. Excepcionalmente se realizarán ensayos en horario de 16:00 a 19:30.</p>
+    <p>Además de los ensayos, la orquesta llevará a cabo encuentros (ensayos de fin de semana completo) a los que se requerirá la asistencia de los músicos.</p>
+    <p>Para cualquier duda o consulta puedes escribirnos a <a href="mailto:orquesta@upm.es">orquesta@upm.es</a>.</p>
+  </section>
+
+  <figure class="photo-break">
+    <img src="concierto-fin-de-curso.jpg" alt="Orquesta Sinfónica UPM en concierto">
+  </figure>
+
+  <section class="content-section" id="anexo-i">
+    <p class="kicker">Anexo I</p>
+    <h2 class="section-h2">Listado de pasajes orquestales</h2>
+    <p>El aspirante podrá elegir tres de los siguientes pasajes orquestales de su instrumento, debiendo haber un contraste entre ellos. Percusión: distintos instrumentos. El resto de instrumentos, variación en tiempo y/o diferentes obras.</p>
+
+    <div class="inst-grid">
+      <div class="inst-card">
+        <h3>Clarinete</h3>
+        <ul>
+          <li>Carreño, Margariteña: Compás 140-183 y 201-203</li>
+          <li>Carreño, Margariteña: Compás 232-270</li>
+          <li>Ginastera, Estancia, Danza IV Malambo: Compás 124-148 y 156-180</li>
+          <li>Márquez, Danzón 2: Compás 1-20</li>
+          <li>Márquez, Danzón 2: Compás 198-218</li>
+        </ul>
+      </div>
+      <div class="inst-card">
+        <h3>Contrabajo</h3>
+        <ul>
+          <li>Ginastera, Estancia, Danza I Los trabajadores agrícolas: Compás 1-65</li>
+          <li>Ginastera, Estancia, Danza III Los peones de hacienda: Compás 1-12 y 17-49</li>
+          <li>Márquez, Danzón 2: Compás 168-198</li>
+          <li>Márquez, Danzón 2: Compás 219-238</li>
+          <li>Márquez, Danzón 2: Compás 301-318</li>
+        </ul>
+      </div>
+      <div class="inst-card">
+        <h3>Fagot</h3>
+        <ul>
+          <li>Carreño, Margariteña: Compás 34-70</li>
+          <li>Carreño, Margariteña: Compás 75-124</li>
+          <li>Carreño, Margariteña: Compás 170-193</li>
+          <li>Ginastera, Estancia, Danza I Los trabajadores agrícolas: Compás 67-120</li>
+        </ul>
+      </div>
+      <div class="inst-card">
+        <h3>Flauta</h3>
+        <ul>
+          <li>Carreño, Margariteña: Compás 26-31</li>
+          <li>Carreño, Margariteña: Compás 290-332</li>
+          <li>Ginastera, Estancia, Danza II Danza del Trigo: Compás 4-12 y 21-44</li>
+          <li>Ginastera, Estancia, Danza IV Malambo: Compás 1-25</li>
+          <li>Ginastera, Estancia, Danza IV Malambo: Compás 124-148</li>
+          <li>Márquez, Danzón 2: Compás 112-121</li>
+          <li>Márquez, Danzón 2: Compás 318-345</li>
+        </ul>
+      </div>
+      <div class="inst-card">
+        <h3>Oboe</h3>
+        <ul>
+          <li>Carreño, Margariteña: Compás 167-183</li>
+          <li>Ginastera, Estancia, Danza I Los trabajadores agrícolas: Compás 97-163</li>
+          <li>Ginastera, Estancia, Danza IV Malambo: Compás 124-148</li>
+          <li>Márquez, Danzón 2: Compás 19-43</li>
+          <li>Márquez, Danzón 2: Compás 329-345</li>
+        </ul>
+      </div>
+      <div class="inst-card">
+        <h3>Percusión</h3>
+        <ul>
+          <li>Xilófono — Ginastera, Estancia, Danza I Los trabajadores agrícolas: Compás 152-184</li>
+          <li>Xilófono — Ginastera, Estancia, Danza IV Malambo: Compás 48-55</li>
+          <li>Xilófono — Ginastera, Estancia, Danza IV Malambo: Compás 103-171</li>
+          <li>Timpani — Ginastera, Estancia, Danza III Los peones de hacienda: Compás 32-81</li>
+          <li>Tamburino — Ginastera, Estancia, Danza IV Malambo: Compás 56-71</li>
+          <li>Tamburino — Ginastera, Estancia, Danza IV Malambo: Compás 103-147</li>
+        </ul>
+      </div>
+      <div class="inst-card">
+        <h3>Trombón</h3>
+        <ul>
+          <li>Carreño, Margariteña: Compás 47-61</li>
+          <li>Carreño, Margariteña: Compás 132-152</li>
+          <li>Márquez, Danzón 2: Compás 328-361</li>
+        </ul>
+      </div>
+      <div class="inst-card">
+        <h3>Trompa</h3>
+        <ul>
+          <li>Carreño, Margariteña: Compás 1-10</li>
+          <li>Carreño, Margariteña: Compás 289-305</li>
+          <li>Ginastera, Estancia, Danza I Los trabajadores agrícolas: Compás 47-104</li>
+          <li>Ginastera, Estancia, Danza III Los peones de hacienda: Compás 1-27</li>
+          <li>Ginastera, Estancia, Danza IV Malambo: Compás 26-48, 84-88 y 120-124</li>
+          <li>Ginastera, Estancia, Danza IV Malambo: Compás 180-188 y 213-247</li>
+          <li>Márquez, Danzón 2: Compás 52-66</li>
+          <li>Márquez, Danzón 2: Compás 328-361</li>
+        </ul>
+      </div>
+      <div class="inst-card">
+        <h3>Trompeta</h3>
+        <ul>
+          <li>Carreño, Margariteña: Compás 26-31 y 35-45</li>
+          <li>Carreño, Margariteña: Compás 128-144</li>
+          <li>Ginastera, Estancia, Danza I Los trabajadores agrícolas: Compás 1-38</li>
+          <li>Ginastera, Estancia, Danza IV Malambo: Compás 26-48</li>
+          <li>Ginastera, Estancia, Danza IV Malambo: Compás 148-156</li>
+          <li>Ginastera, Estancia, Danza IV Malambo: Compás 212-219</li>
+        </ul>
+      </div>
+      <div class="inst-card">
+        <h3>Tuba</h3>
+        <ul>
+          <li>Carreño, Margariteña: Compás 47-63</li>
+          <li>Carreño, Margariteña: Compás 248-265</li>
+          <li>Márquez, Danzón 2: Compás 51-112</li>
+          <li>Márquez, Danzón 2: Compás 328-361</li>
+        </ul>
+      </div>
+      <div class="inst-card">
+        <h3>Viola</h3>
+        <ul>
+          <li>Carreño, Margariteña: Compás 45-60</li>
+          <li>Ginastera, Estancia, Danza I Los trabajadores agrícolas: Compás 1-46</li>
+          <li>Ginastera, Estancia, Danza I Los trabajadores agrícolas: Compás 105-152</li>
+          <li>Ginastera, Estancia, Danza IV Malambo: Compás 13-41</li>
+          <li>Márquez, Danzón 2: Compás 300-347</li>
+        </ul>
+      </div>
+      <div class="inst-card">
+        <h3>Violín</h3>
+        <ul>
+          <li>Carreño, Margariteña: Compás 47-62</li>
+          <li>Carreño, Margariteña: Compás 153-166</li>
+          <li>Carreño, Margariteña: Compás 215-234</li>
+          <li>Márquez, Danzón 2: Compás 86-112</li>
+          <li>Márquez, Danzón 2: Compás 168-182</li>
+          <li>Márquez, Danzón 2: Compás 328-345</li>
+        </ul>
+      </div>
+      <div class="inst-card">
+        <h3>Violonchelo</h3>
+        <ul>
+          <li>Carreño, Margariteña: Compás 34-45</li>
+          <li>Carreño, Margariteña: Compás 191-200</li>
+          <li>Carreño, Margariteña: Compás 288-302</li>
+          <li>Ginastera, Estancia, Danza IV Malambo: Compás 18-41</li>
+          <li>Márquez, Danzón 2: Compás 59-74 y 94-112</li>
+          <li>Márquez, Danzón 2: Compás 328-345</li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="margin-top:2rem;">Las partituras correspondientes se pueden descargar en el siguiente enlace:</p>
+    <a href="https://drive.google.com/drive/folders/1roQSMGKZtFZN_ULv5cjpJNpvAhsIFEm-?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-outline">Descargar partituras</a>
+  </section>
+
+  <section class="content-section" id="anexo-ii">
+    <p class="kicker">Anexo II</p>
+    <h2 class="section-h2">Del acceso y baja en la Orquesta Sinfónica UPM</h2>
+
+    <div class="reg-part">
+      <h3 class="reg-part-title">I. Disposiciones generales</h3>
+
+      <div class="reg-article">
+        <h4>Artículo 1.- Acceso y pruebas</h4>
+        <p>El acceso a la orquesta, como miembro de pleno derecho, es libre y universal para cualquier persona que supere las pruebas de acceso y cuyas cualidades y preparación sean suficientes y estén acreditadas.</p>
+        <p>Este título no es de aplicación:</p>
+        <ul>
+          <li>A los solistas invitados.</li>
+          <li>A los miembros de otras agrupaciones cuando estas colaboren en el desarrollo de un concierto concreto.</li>
+        </ul>
+      </div>
+
+      <div class="reg-article">
+        <h4>Artículo 2.- Convocatoria</h4>
+        <p>La convocatoria de pruebas de acceso se llevará a cabo al inicio de la temporada, preferentemente antes del inicio de los ensayos, en fechas acordadas con la Universidad Politécnica de Madrid. Fuera de estas fechas podrán convocarse pruebas de acceso siempre que sea necesario en caso de necesidades de plantilla.</p>
+        <p>La convocatoria expresará el día o días para su realización, el lugar donde se llevarán a cabo las pruebas, las especialidades convocadas y los términos del ejercicio. También podrá contener cualesquiera otros criterios de índole musical siempre que sean objetivos razonables. Todo ello será debidamente difundido en los canales de comunicación oficiales de la Asociación y otros que se consideren oportunos.</p>
+        <p>Cualquier interesado podrá solicitar prueba de acceso en cualquier momento de la temporada, pero su realización quedará condicionada a la decisión del Director acerca de la conveniencia de realizarla, teniendo en cuenta para ello el acomodo al calendario y la necesidad de contar con músicos de determinada especialidad.</p>
+      </div>
+
+      <div class="reg-article">
+        <h4>Artículo 3.- Presentación de aspirantes</h4>
+        <p>Los aspirantes deberán comunicar su interés en concurrir a la prueba por email desde la fecha de publicación de los términos de la convocatoria hasta la fecha límite indicada en la convocatoria de la prueba. En dicha comunicación, los aspirantes deberán incluir sus datos en la ficha que se proporcionará con la convocatoria de las pruebas.</p>
+      </div>
+
+      <div class="reg-article">
+        <h4>Artículo 4.- Contenido de la prueba</h4>
+        <p>La prueba constará de las siguientes partes:</p>
+        <ul>
+          <li>La interpretación de una obra o movimiento de esta elegida por el aspirante, sin necesidad de acompañamiento de piano y con una duración de entre 5 y 10 minutos.</li>
+          <li>La interpretación de pasajes orquestales relevantes para el desarrollo de la temporada de conciertos. Dichos pasajes serán elegidos por el Director en cada sesión de pruebas, y puestos en conocimiento de los aspirantes en la información de la convocatoria.</li>
+        </ul>
+      </div>
+
+      <div class="reg-article">
+        <h4>Artículo 5.- Tribunal</h4>
+        <p>El Tribunal estará compuesto, por:</p>
+        <ul>
+          <li>El Director Artístico, que lo presidirá.</li>
+          <li>Uno o varios miembros de la Junta Directiva.</li>
+          <li>Un vocal de cuerda, jefe de sección.</li>
+          <li>Un vocal de viento, jefe de sección.</li>
+        </ul>
+        <p>El Tribunal podrá funcionar con un mínimo de dos miembros, uno de los cuales será necesariamente el Director Artístico. Así mismo, el tribunal podrá estar compuesto de un mayor número de miembros, a petición del Director o la Junta Directiva de la Asociación.</p>
+        <p>Podrán, además, asistir los miembros en activo de la orquesta que lo soliciten, con autorización del Director.</p>
+      </div>
+    </div>
+
+    <div class="reg-part">
+      <h3 class="reg-part-title">II. Valoración de los aspirantes</h3>
+
+      <div class="reg-article">
+        <h4>Artículo 6.- Criterios de valoración</h4>
+        <p>Cada miembro del tribunal valorará a los aspirantes con una nota, resultante de la media de los dos ejercicios musicales. La media de las valoraciones de estos dará lugar a la nota definitiva del aspirante.</p>
+        <p>Los criterios de valoración constituyen acto discrecional del Tribunal. El Director, a tal efecto, podrá establecer directrices sobre los aspectos a valorar o su ponderación en la nota final.</p>
+      </div>
+
+      <div class="reg-article">
+        <h4>Artículo 7.- Distribución de plazas</h4>
+        <p>El Director determinará el número de plazas titulares para cada una de las especialidades convocadas. Así mismo, determinará el número de plazas de reserva en atención a la previsión de posibles sustituciones y ampliaciones de plantilla.</p>
+        <p>Tendrán la consideración de miembros titulares aquellos aspirantes que, habiendo superado la prueba, accedan a una de las plazas vacantes en la especialidad, adquiriendo la condición de miembro de pleno derecho.</p>
+        <p>Tendrán la consideración de reserva aquellos aspirantes que, habiendo superado la prueba, no dispongan de plaza vacante. Su situación quedará en suspenso, siendo llamados para sustituciones puntuales y ampliaciones de plantilla, adquiriendo la condición de titulares cuando se produzca una vacante.</p>
+      </div>
+
+      <div class="reg-article">
+        <h4>Artículo 8.- Deliberaciones</h4>
+        <p>Las deliberaciones llevadas a cabo por el Tribunal serán secretas.</p>
+        <p>El Tribunal asignará las plazas titulares según orden decreciente de puntuación. Agotadas estas, procederá a asignar las plazas de reserva con arreglo al mismo criterio.</p>
+        <p>En caso de empate entre dos aspirantes de la misma especialidad, el Director poseerá el voto de calidad.</p>
+      </div>
+
+      <div class="reg-article">
+        <h4>Artículo 9.- Resultados</h4>
+        <p>Los resultados se publicarán a lo largo de la semana siguiente a la fecha máxima de envío de la prueba, mediante comunicación por correo electrónico a los aspirantes inscritos en la prueba.</p>
+        <p>La decisión del Tribunal es inapelable.</p>
+      </div>
+    </div>
+
+    <div class="reg-part">
+      <h3 class="reg-part-title">III. Régimen de plazas no cubiertas</h3>
+
+      <div class="reg-article">
+        <h4>Artículo 10.- Plazas no cubiertas</h4>
+        <p>Se consideran plazas no cubiertas aquellas que han quedado vacantes tras la convocatoria de una prueba de acceso. Ante esta situación el Director podrá optar por:</p>
+        <ul>
+          <li>Solicitar una nueva convocatoria de plazas.</li>
+          <li>Cubrir las plazas empleando el siguiente procedimiento:</li>
+        </ul>
+        <p>En el caso de un aspirante interesado en formar parte de la agrupación. El Director, a criterio personal, podrá citarle al siguiente ensayo que considere. El aspirante ensayará de forma ordinaria, oído por el jefe de sección y el Director de forma atenta. Al concluir el ensayo, el Director y el jefe de sección acordarán la admisión o no como miembro en pleno derecho. Esta decisión se comunicará al aspirante tras la deliberación.</p>
+      </div>
+    </div>
+
+    <div class="reg-part">
+      <h3 class="reg-part-title">IV. Prohibiciones de acceso</h3>
+
+      <div class="reg-article">
+        <h4>Artículo 11.- Supuestos</h4>
+        <p>El Tribunal no estará facultado para valorar a los aspirantes que se hallen en alguna de las situaciones que se describen a continuación:</p>
+        <ul>
+          <li>Aquellos exmiembros que tengan prohibido el regreso a la agrupación.</li>
+          <li>A cualquier aspirante del que se tenga constancia que ha promovido, causado o apoyado acciones, declaraciones o manifestaciones que vayan en detrimento de la propia Asociación, la agrupación, de su Director o de cualquiera de sus miembros, intimidad y propia imagen.</li>
+        </ul>
+        <p>El Tribunal comunicará al aspirante la prohibición de acceso que recae sobre él, no estando facultado para emitir valoración alguna.</p>
+        <p>El aspirante que haya sido declarado incurso en alguna prohibición de acceso, podrá recurrir ante la Junta Directiva de la Asociación, mediante email en el que exponga los motivos de la improcedencia de esta declaración. La Junta Directiva de la Asociación resolverá sobre este extremo en el plazo de 5 días, oído el Tribunal. Dicha resolución será inapelable.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span class="footer-copy">© 2026 Orquesta Sinfónica UPM · Universidad Politécnica de Madrid</span>
+  <a href="index.html" class="footer-link">← Volver a la web</a>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+</body>
+</html>
