@@ -1300,6 +1300,10 @@
     });
 
     viewport.addEventListener('pointerdown', (e) => {
+      // Don't hijack clicks on the nav arrows / dots: capturing the pointer
+      // here would reroute their pointerup (and the click it generates) to
+      // the viewport instead of the button, silently breaking them.
+      if (e.target.closest('.carousel-nav, .carousel-dot')) return;
       containerWidth = viewport.getBoundingClientRect().width;
       dragging = true;
       startX = e.clientX;
